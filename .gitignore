@@ -22,8 +22,8 @@ Thumbs.db
 # Large output or data artifacts
 data/data/og-positive-affirmations-dataset/
 data/data/og-emotion-detection-tweets-dataset/
-data/data/paired_affirmations.csv
-data/data/sample_preview.csv
+data/paired_affirmations.csv
+#data/sample_preview.csv
 
 data/og-emotion-detection-tweets-dataset/
 data/og-positive-affirmations-dataset/

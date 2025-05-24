@@ -57,5 +57,6 @@ echo "Environment activated..."
 
 
 # --- Launch the Training Script ---
-echo "Starting Data Downloading & Preprocessing..."
-bash run_project.sh
+### Ran this on Saturday, May 24, 2025, don't have to do this again ###
+#echo "Starting Data Downloading & Preprocessing..."
+#bash run_project.sh

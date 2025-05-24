@@ -49,3 +49,31 @@ Already Done as of Saturday, May 24:
 * add README
 * add comments into code
 * optional: model evaluation script (BLEU, cosine similarity)
+
+
+
+## Files
+
+### train_4295606.log
+* Paired Dataset Summary (paired_affirmations.csv)
+Successfully paired tweet sentimnets with relevant affirmation tags using keyword heuristics, emotion-to-tag mapping, and semantic similarity scoring
+
+##### 1. Affirmation Tag Distribution
+* Dataset includes 114,601 tweet-affirmation pairs categorized into 9 tags
+* Most common tags: love, blessing, happiness, gratitude, and spiritual
+* Less frequent tags: health, beauty, money, sleep (useful for class balancing strategies)
+
+##### 2. Missing Value Check
+* All columns (Input, Output, Emotion_Label, Affirmation_Tag) are complete
+* Confirms no missing values - data is clean and ready for training
+* Ensures reliable input for model training without imputation or filtering
+
+##### 3. Character Count Distribution
+* Input (Tweets)
+    - Average tweet length: 70.9 characters
+    - Tweets range from 1 to 167 characters, with 50% under 65 characters
+    - Supports short-form, conversational text of social media
+* Output (Affirmations)
+    - Average affirmation length: 40.8 characters
+    - Affirmations range from 10 to 79 characters, with half being under 41 characters
+    - Consistent with concise, punchy affirmation formatting suitable for GPT-2 style generation
