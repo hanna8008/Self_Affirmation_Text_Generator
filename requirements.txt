@@ -4,5 +4,6 @@ kagglehub
 sentence-transformers
 scikit-learn
 tqdm
+wordcloud
 torch
 transformers
