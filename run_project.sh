@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Activate Envrionment ---
-source activate affirmgen
+#source activate affirmgen
 
 # --- Step 1: Download and Preprocess ---
 echo "Running data preparation..."

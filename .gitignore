@@ -25,6 +25,9 @@ data/data/og-emotion-detection-tweets-dataset/
 data/data/paired_affirmations.csv
 data/data/sample_preview.csv
 
+data/og-emotion-detection-tweets-dataset/
+data/og-positive-affirmations-dataset/
+
 # If using Quest or cluster logs
 *.o*
 *.e*
