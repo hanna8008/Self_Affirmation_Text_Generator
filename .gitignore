@@ -1,0 +1,35 @@
+# Byte-compiled / cache / logs
+__pycache__/
+*.py[cod]
+*.log
+
+# Environment files
+.env
+*.env
+.venv/
+env/
+.conda/
+*.egg-info/
+*.ipynb_checkpoints/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook junk
+.ipynb_checkpoints/
+
+# Large output or data artifacts
+data/data/og-positive-affirmations-dataset/
+data/data/og-emotion-detection-tweets-dataset/
+data/data/paired_affirmations.csv
+data/data/sample_preview.csv
+
+# If using Quest or cluster logs
+*.o*
+*.e*
+.slurm*
+
+# Model files (future training)
+*.pt
+*.ckpt
