@@ -129,7 +129,7 @@ ssh -X your_netid@login.quest.northwestern.edu
 
 ### 2. Clone the Repo and Setup
 ```bash
-git clone https://github.com/yourusername/affirmation_generator.git
+git clone https://github.com/hanna8008/affirmation_generator.git
 cd affirmation_generator
 bash setup_env.sh
 conda activate affirmgen
@@ -156,7 +156,7 @@ The GUI (built with Gradio) supports:
 
 | Input                             | Emotion   | Affirmation                                               |
 | --------------------------------- | --------- | --------------------------------------------------------- |
-| I'm feeling stuck and overwhelmed | worry     | I trust that everything is unfolding for my highest good. |
+| I'm feeling stuck and overwhelmed |           | I trust that everything is unfolding for my highest good. |
 | I'm grateful for my progress      | gratitude | I honor how far I’ve come and welcome all that's ahead.   |
 
 ---
@@ -201,7 +201,7 @@ python scripts/generate_batch.py \
   --log_output outputs/generated/generated_affirmations.csv
 ```
 
-**Evaluation**:
+✅ **Evaluation**:
 ```bash
 python scripts/evaluation.py \
   --predicted outputs/generated/generated_affirmations.csv \
