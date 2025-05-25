@@ -2,11 +2,15 @@
 # gui.py
 # ----------------------------------------------------------------------------
 
+
+
 # --- Imports ---
 import gradio as gr
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import yaml
+import os
+from datetime import datetime
 
 
 
@@ -35,15 +39,15 @@ def format_input(text, emotion=None):
 
 
 
- # --- Generate Affirmation ---
- def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0.8, top_k=50, top_p=0.95):
+# --- Generate Affirmation ---
+def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0.8, top_k=50, top_p=0.95):
     inputs = tokenizer(prompt, return_tensors="pt")
     inputs_ids = inputs.input_ids.to(model.device)
     attention_mask = inputs.attention_mask.to(model.device)
 
     with torch.no_grad():
         output = model.generate(
-            input_ids = input_ids,
+            input_ids = inputs_ids,
             attention_mask = attention_mask,
             max_length = max_length,
             temperature = temperature,
@@ -65,7 +69,7 @@ def affirmation(journal_text, emotion_tag):
 
     #save to results/affirmations_generated/inference_gui_log
     os.makedirs("results", exist_ok=True)
-    timestamp = datetiem.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     #clean file-safe version of the prompt
     safe_prompt = journal_text[:30].replace(" ", "_").replace("/", "_")
@@ -87,19 +91,52 @@ tokenizer, model = load_model_and_tokenizer(config["output_dir"])
 
 
 # --- Gradio UI ---
-interface = gr.Interface(
+"""interface = gr.Interface(
     fn = affirmation,
     inputs = [
-        gr.Textbox(label = "What's on your mind?", placeholder = "Typeyour thoughts here...", lines=4),
+        gr.Textbox(label = "What's on your mind?", placeholder = "Type your thoughts here...", lines=4),
         gr.Textbox(label = "Optional Emotion Tag", placeholder = "e.g. love, happiness, gratitude (optional)")
     ],
-    outputs = "text"
+    outputs = "text",
     title = "Mirror Me: Affirmation Generator", 
     description = "Enter how you're feeling and receive a personalized affirmation."
-)
+)"""
+
+with gr.Blocks(theme=gr.themes.Soft(primary_hue="pink"))as interface:
+    gr.Markdown("""
+    # *Mirror Me: Affirmation Generator*  
+    *Enter how you're feeling and receive a personalized affirmation.*
+    """)
+
+    with gr.Column():
+        journal_input = gr.Textbox(
+            lines = 4,
+            label="What's on your mind?",
+            placeholder="Type your thoughts here...",
+            elem_id="journal_input"
+        )
+        emotion_input = gr.Textbox(
+            label="Optional Emotion Tag",
+            placeholder="worry, sad, stress, anger, fear",
+            elem_id="emotion_input"
+        )
+        submit_button = gr.Button("Submit")
+
+        output_box = gr.Textbox(
+            lines=3,
+            label="Affirmation",
+            placeholder="Your affirmation will appear here",
+            elem_id="output_box"
+        )
+    
+    def wrapped_affirmation(journal_text, emotion_tag):
+        return affirmation(journal_text, emotion_tag)
+
+    submit_button.click(fn=wrapped_affirmation, inputs=[journal_input, emotion_input], outputs=output_box)
+
 
 
 
 # --- main ---
 if __name__ == "__main__":
-    interface.launch()
+    interface.launch(share=True, favicon_path="static/heart_icon.png")

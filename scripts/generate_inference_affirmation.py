@@ -10,6 +10,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import argparse
 from datetime import datetime
 import os
+import re
 import yaml
 
 
@@ -33,6 +34,7 @@ def load_model_and_tokenizer(model_dir):
 
 # --- Format Input (emotion conditioning optional)
 def format_input(text, emotion=None):
+    #cue = " Now give me a short positive affirmation in response to this sad, negative, etc. response:"
     if emotion: 
         return f"[{emotion.upper()}] {text.strip()}"
     return text.strip()
@@ -40,7 +42,7 @@ def format_input(text, emotion=None):
 
 
 # --- Generate Affirmation ---
-def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0.8, top_k=50, top_p=0.95):
+def generate_affirmation(prompt, tokenizer, model, max_length=150, temperature=0.6, top_k=50, top_p=0.95):
     inputs = tokenizer(prompt, return_tensors="pt")
     inputs_ids = inputs.input_ids.to(model.device)
     attention_mask = inputs.attention_mask.to(model.device)
@@ -54,11 +56,21 @@ def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0
             top_k=top_k,
             top_p=top_p,
             do_sample=True,
+            no_repeat_ngram_size=3,
+            eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.pad_token_id
         )
 
     generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
-    return generated_text
+    prompt_text = tokenizer.decode(inputs_ids[0], skip_special_tokens=True)
+    final_generated_affirmation = generated_text[len(prompt_text):].strip()
+
+    #clean up the response
+    final_generated_affirmation = re.sub(r"#\w+", "", final_generated_affirmation)
+    final_generated_affirmation = re.sub(r"http\S+", "", final_generated_affirmation)
+    final_generated_affirmation = re.sub(r"\s+", " ", final_generated_affirmation).strip()
+
+    return final_generated_affirmation
 
 
 
