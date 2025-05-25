@@ -1,87 +1,217 @@
-# Self_Affirmation_Text_Generator
+# Mirror Me: Self-Affirmation Text Generator Using Fine-Tuned GPT-2
 
-## Completed as of Saturday, May 24:
-1. Built and ran `combine_affirmations_tweets_datasets.py` to generate `paired_affirmations.csv`
-2. Applied semantic similarity filtering, emotion-to-tag mapping, and additional quality filters
-3. Installed all required dependencies, including `sentence-transformers`, `transformers`, and `accelerate`
-4. Created and validated the scripts: `run_project.sh`, `submit_project.sh`, and `setup_env.sh`
-5. Finalized `requirements.txt` with pinned package versions for reproducibility
-6. Reinstalled and configured Miniconda, created `affirmgen` Conda environment, and fixed PATH/env issues
-7. Completed `eda_paired_dataset.ipynb` — included visualizations for sentence lengths, emotion/tag distribution, etc.
-8. Wrote `train_gpt2.py` for full GPT-2 fine-tuning pipeline
-9. Set up and tested `configs/config.yaml` with all hyperparameters and data paths
-10. Enabled TensorBoard logging via `report_to="tensorboard"` in `TrainingArguments`
-11. Submitted full training job (114k examples, 35 epochs) on Quest using A100 GPU
-12. Validated SLURM logging, checkpoint saving, and best model selection with `load_best_model_at_end=True`
+### Best Affirmation Example
+
+[See Output Example](#sample-generated-affirmations)
+
+### How to Run the GUI and Generate Text:
+
+[Accessing and Running on Quest](#accessing-and-running-on-quest)
 
 ---
 
-## Remaining Tasks
+## Table of Contents
 
-### Model Inference
-1. **generate_affirmation.py**
-   - Load trained GPT-2 model from best checkpoint
-   - Accept emotional input (tweet, journal entry, etc.)
-   - Generate and return an affirmation response
-   - Log or save output for sample evaluation
-
-### Gradio GUI
-2. **gui.py**
-   - Input box for free-text journal input
-   - Optional dropdown for mood tag
-   - Generate button
-   - Display box for predicted affirmation
-
-### Report & Evaluation
-3. Final deliverables:
-   - Summarize key EDA visualizations
-   - Evaluate quality of generated affirmations
-   - Compare sample generations across tags/moods
-   - Write project report: methodology, results, reflections
-   - Polish project folder structure and remove temp/debug code
-   - Finalize this README
-   - Update code comments
-   - Optional: implement evaluation metrics (BLEU, cosine similarity, etc.)
+* [Overview](#overview)
+* [What This Project Actually Does](#what-this-project-actually-does)
+* [What You Can Use This For](#what-you-can-use-this-for)
+* [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+* [Model Architecture](#model-architecture)
+* [Folder Structure](#folder-structure)
+* [Accessing and Running on Quest](#accessing-and-running-on-quest)
+* [Extra Criteria - GUI Overview](#extra-criteria---gui-overview)
+* [Sample Generated Affirmations](#sample-generated-affirmations)
+* [Training Loss Graph](#training-loss-graph)
+* [Data Preparation & Transfer](#data-preparation--transfer)
+* [Model Training on Quest (Northwestern Quest)](#model-training-on-quest-northwestern-quest)
+* [Future Improvements](#future-improvements)
+* [References and Tools Used](#references-and-tools-used)
 
 ---
 
-## Notes
-- Current model uses full paired dataset (114,601 examples)
-- Model is training for 35 epochs with per-epoch evaluation and checkpointing
-- TensorBoard enabled — live monitoring of loss curves during training
-- Model expected to be ready for inference testing by Sunday night
+## Overview
 
+**Mirror Me** is an AI-powered affirmation generator that takes in journal-style text and optionally an emotional label (e.g., "gratitude", "worry") to generate a comforting, self-affirming response using a fine-tuned GPT-2 language model.
 
----
-
-
-## Files
-
-### train_4295606.log
-* Paired Dataset Summary (paired_affirmations.csv)
-Successfully paired tweet sentimnets with relevant affirmation tags using keyword heuristics, emotion-to-tag mapping, and semantic similarity scoring
+This tool was created for individuals looking to explore mindfulness, journaling, and positive self-talk — as well as researchers exploring emotion-to-text conditioning.
 
 ---
 
-##### 1. Affirmation Tag Distribution
-* Dataset includes 114,601 tweet-affirmation pairs categorized into 9 tags
-* Most common tags: love, blessing, happiness, gratitude, and spiritual
-* Less frequent tags: health, beauty, money, sleep (useful for class balancing strategies)
+## What This Project Actually Does
 
-##### 2. Missing Value Check
-* All columns (Input, Output, Emotion_Label, Affirmation_Tag) are complete
-* Confirms no missing values - data is clean and ready for training
-* Ensures reliable input for model training without imputation or filtering
+Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive affirmations. At inference time, the user can provide a journal-style entry and an optional emotion, and the model generates an appropriate affirmation.
 
-##### 3. Character Count Distribution
-* Input (Tweets)
-    - Average tweet length: 70.9 characters
-    - Tweets range from 1 to 167 characters, with 50% under 65 characters
-    - Supports short-form, conversational text of social media
-* Output (Affirmations)
-    - Average affirmation length: 40.8 characters
-    - Affirmations range from 10 to 79 characters, with half being under 41 characters
-    - Consistent with concise, punchy affirmation formatting suitable for GPT-2 style generation
+### What you get:
 
+* A generative language model that outputs affirmations based on emotional input
+* An interactive Gradio interface for testing
+* Batch generation & evaluation scripts for large-scale inference
 
-# Don't forget to include how I use tensorboard
+---
+
+## What You Can Use This For
+
+* Mental health & wellness journaling tools
+* Chatbot enhancement with emotion-sensitive replies
+* AI-driven encouragement apps
+* Educational tools for emotional literacy
+
+---
+
+## Exploratory Data Analysis (EDA)
+
+This project includes several visualizations that explored the:
+
+* Distribution of emotion labels
+* Most common affirmation tags
+* Input vs. output text lengths
+
+> All EDA was performed in `eda_paired_dataset.ipynb` and outputs saved in `outputs/eda/`
+
+---
+
+## Model Architecture
+
+* **Base Model**: GPT-2 (small)
+* **Conditioning**: Optional text tag (e.g., "\[GRATITUDE]") prepended
+* **Loss Function**: Causal Language Modeling (CLM) with CrossEntropyLoss
+* **Training Epochs**: 35
+* **Trained On**: 114,000+ tweet-affirmation pairs
+
+---
+
+## Folder Structure
+
+```
+├── configs/
+│   └── config.yaml                     # Training config file
+├── data/
+│   ├── paired_affirmations.csv        # Full training dataset
+│   ├── train.csv / val.csv / test.csv # Pre-split datasets
+│   └── batch_inputs.csv               # Input file for batch generation
+├── outputs/
+│   ├── checkpoints/                   # Model weights
+│   ├── generated/                     # Sample affirmations
+│   └── logs/                          # Training logs + loss curves
+├── scripts/
+│   ├── train_gpt2.py                  # Fine-tuning script
+│   ├── generate_batch.py              # Batch generation from CSV
+│   ├── evaluation.py                  # Cosine similarity evaluation
+├── generate_inference_affirmation.py  # Inference script
+├── gui.py                              # Gradio interface
+├── run_gui.sh                          # Bash launcher for GUI
+├── setup_env.sh                        # Conda setup script
+├── submit_project.sh                   # Quest SLURM job script
+├── requirements.txt                    # Python dependencies
+```
+
+---
+
+## Accessing and Running on Quest
+
+### 1. Log into Quest
+
+```bash
+ssh -X your_netid@login.quest.northwestern.edu
+```
+
+### 2. Clone the Repo into Quest
+
+```bash
+git clone https://github.com/yourusername/affirmation_generator.git
+cd affirmation_generator
+```
+
+### 3. Setup Conda Environment (First Time Only)
+
+```bash
+bash setup_env.sh
+```
+
+### 4. Activate Environment
+
+```bash
+conda activate affirmgen
+```
+
+### 5. Run the GUI
+
+```bash
+bash run_gui.sh
+```
+
+### 6. Access via Browser Link from Gradio
+
+Watch terminal output for a link beginning with:
+
+```bash
+Running on public URL: https://...
+```
+
+---
+
+## Extra Criteria - GUI Overview
+
+The GUI is built with Gradio and supports:
+
+* Free-text input (journal-style)
+* Optional emotion tag input
+* Button click generation
+* Real-time display of affirmation
+
+---
+
+## Sample Generated Affirmations
+
+| Input                             | Emotion   | Affirmation                                               |
+| --------------------------------- | --------- | --------------------------------------------------------- |
+| I'm feeling stuck and overwhelmed | worry     | I trust that everything is unfolding for my highest good. |
+| I'm grateful for my progress      | gratitude | I honor how far I’ve come and welcome all that's ahead.   |
+
+---
+
+## Training Loss Graph
+
+The following chart shows validation loss over 35 epochs.
+![Training Loss](outputs/logs/train_loss.png)
+
+---
+
+## Data Preparation & Transfer
+
+* Combined emotional tweets + affirmations into `paired_affirmations.csv`
+* Used sentence-transformers for cosine similarity pairing
+* Transferred data using `scp` or Git sync
+
+---
+
+## Model Training on Quest (Northwestern Quest)
+
+Used A100 GPU node with SLURM job:
+
+```bash
+bash submit_project.sh
+```
+
+Model outputs stored in:
+
+* `outputs/checkpoints/`
+* `outputs/logs/`
+* `outputs/generated/`
+
+---
+
+## Future Improvements
+
+* Add BLEU/ROUGE metrics
+* Expand emotion conditioning with multi-label support
+* Integrate daily journaling tracker
+
+---
+
+## References and Tools Used
+
+1. [Hugging Face Transformers](https://huggingface.co/transformers/)
+2. [Sentence Transformers](https://www.sbert.net/)
+3. [Gradio](https://gradio.app/)
+4. [Quest HPC @ Northwestern](https://www.it.northwestern.edu/departments/it-services-support/research/computing/quest/index.html)
