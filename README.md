@@ -1,6 +1,6 @@
 # Self_Affirmation_Text_Generator
 
-## Completed as of Saturday, May 25:
+## Completed as of Saturday, May 24:
 1. Built and ran `combine_affirmations_tweets_datasets.py` to generate `paired_affirmations.csv`
 2. Applied semantic similarity filtering, emotion-to-tag mapping, and additional quality filters
 3. Installed all required dependencies, including `sentence-transformers`, `transformers`, and `accelerate`
@@ -40,6 +40,7 @@
    - Write project report: methodology, results, reflections
    - Polish project folder structure and remove temp/debug code
    - Finalize this README
+   - Update code comments
    - Optional: implement evaluation metrics (BLEU, cosine similarity, etc.)
 
 ---
@@ -83,4 +84,4 @@ Successfully paired tweet sentimnets with relevant affirmation tags using keywor
     - Consistent with concise, punchy affirmation formatting suitable for GPT-2 style generation
 
 
-# Don't forget to include how I saw tensorboard
+# Don't forget to include how I use tensorboard
