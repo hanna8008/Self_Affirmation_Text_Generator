@@ -1,11 +1,22 @@
+# Core Libraries
+torch
+transformers==4.39.3
+datasets
+# Downgraded to avoid conflict
+sentence-transformers==2.2.2
+tokenizers
+accelerate==0.27.2
+
+# Data + EDA
 pandas
 numpy
-kagglehub
-sentence-transformers
 scikit-learn
+matplotlib
+seaborn
 tqdm
 wordcloud
-torch
-transformers>=4.35.0
+pyyaml
+
+# Additional Libraries
 tensorboard
-datasets
+gradio 

@@ -40,6 +40,9 @@ conda activate affirmgen
 
 echo "Conda envrionemnt 'affirmgen' activated."
 
+echo "Python path: $(which python)"
+python -c "import transformers; print('Transformers version:', transformers.__version__)"
+
 
 
 # --- Set working directory to job submission location ---

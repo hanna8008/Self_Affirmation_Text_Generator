@@ -10,7 +10,7 @@ tokenizer_name: gpt2
 # --- Training Hyperparamters ---
 learning_rate: 5e-5
 batch_size: 4
-num_train_epochs: 1
+num_train_epochs: 35
 weight_decay: 0.01
 warmup_steps: 500
 logging_steps: 100

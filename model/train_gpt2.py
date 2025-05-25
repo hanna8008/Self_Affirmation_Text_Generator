@@ -11,11 +11,17 @@ import pandas as pd
 from datasets import Dataset
 from transformers import (
     AutoTokenizer,
-    AutoModelForCasualLM,
+    AutoModelForCausalLM,
     Trainer,
     TrainingArguments,
-    DataCollatorForLanguageModeling
+    DataCollatorForLanguageModeling,
+    set_seed
 )
+
+
+
+# --- Reproducibiity ---
+set_seed(42)
 
 
 
@@ -37,7 +43,12 @@ def load_dataset(csv_path):
 
 # --- Tokenization ---
 def tokenize_data(dataset, tokenizer, max_length=512):
-    return dataset.map(lambda e:tokenizer(e['text'], truncation=True, padding='max_length', max_length=max_length), batched=True)
+    return dataset.map(
+        lambda e:tokenizer(e['text'], 
+        truncation=True, 
+        padding='max_length', 
+        max_length=max_length), 
+        batched=True)
 
 
 
@@ -52,7 +63,16 @@ def main():
     
     # --- Load Tokenizer & Model ---
     tokenizer = AutoTokenizer.from_pretrained(config['tokenizer_name'])
-    model = AutoModelForCasualLM.from_pretrained(config['model_name'])
+
+    #add pad token if missing
+    if tokenizer.pad_token is None:
+        print("Padding token not found. Setting pad_token = eos_token.")
+        tokenizer.pad_token = tokenizer.eos_token
+
+    model = AutoModelForCausalLM.from_pretrained(config['model_name'])
+
+    #resize embeddings to accommodate new pad token
+    model.resize_token_embeddings(len(tokenizer))
 
 
     # --- Load & Prepare Datasets ---
@@ -63,9 +83,9 @@ def main():
     val_ds = tokenize_data(val_ds, tokenizer)
 
 
-    # --- shorten training with smaller datasets ---
+    """# --- shorten training with smaller datasets ---
     train_ds = train_ds.select(range(min(1000, len(train_ds))))
-    val_ds = val_ds.select(range(min(200, len(val_ds))))
+    val_ds = val_ds.select(range(min(200, len(val_ds))))"""
 
 
     # --- Training Arguments ---
@@ -73,15 +93,19 @@ def main():
         output_dir = config['output_dir'],
         evaluation_strategy = "epoch",
         save_strategy = "epoch",
-        learning_rate = config['learning_rate'],
+        logging_strategy = "epoch",
+        logging_steps = 0, 
+        learning_rate = float(config['learning_rate']),
         per_device_train_batch_size = config['batch_size'],
         per_device_eval_batch_size = config['batch_size'],
         num_train_epochs = config['num_train_epochs'],
         weight_decay = config['weight_decay'],
         logging_dir = config['logging_dir'],
-        logging_steps = config['logging_steps'],
         save_total_limit = 2,
-        load_best_model_at_end=True,
+        load_best_model_at_end = True,
+        metric_for_best_model = "eval_loss",
+        greater_is_better = False,
+        report_to = "tensorboard",
         fp16 = torch.cuda.is_available()
     )
 
@@ -109,6 +133,11 @@ def main():
     model.save_pretrained(config['output_dir'])
     tokenizer.save_pretrained(config['output_dir'])
     print(f"Model and tokenizer saved to {config['output_dir']}")
+
+
+
+    # --- Print Best Model ---
+    print("Best model path:", trainer.state.best_model_checkpoint)
 
 
 
