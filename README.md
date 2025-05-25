@@ -19,7 +19,7 @@
 * [Sample Generated Affirmations](#sample-generated-affirmations)
 * [Training Loss Graph](#training-loss-graph)
 * [Data Preparation & Transfer](#data-preparation--transfer)
-* [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+* [Exploratory Data Analysis (EDA) of Combined Dataset](#exploratory-data-analysis-eda)
 * [Model Training on Quest (Northwestern Quest)](#model-training-on-quest-northwestern-quest)
 * [Final Scripts I Will Run](#final-scripts-i-will-run)
 * [Professor Instructions](#professor-instructions)
@@ -166,7 +166,7 @@ The GUI (built with Gradio) supports:
 ---
 
 ## Exploratory Data Analysis (EDA)
-This project includes several visualizations that explored some of the following:
+This project includes several visualizations that explore the data of the new dataset that was made by combining the affirmations dataset and emotions detection tweets dataset.
 
 ### Affirmation Tag Distribution
 ![Affirmation Tag Distribution](results/eda/affirmation_tag_distribution.png)
