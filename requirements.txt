@@ -16,6 +16,7 @@ seaborn
 tqdm
 wordcloud
 pyyaml
+notebook
 
 # Additional Libraries
 tensorboard
