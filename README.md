@@ -12,7 +12,6 @@
 * [Overview](#overview)
 * [What This Project Actually Does](#what-this-project-actually-does)
 * [What You Can Use This For](#what-you-can-use-this-for)
-* [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 * [Model Architecture](#model-architecture)
 * [Folder Structure](#folder-structure)
 * [Accessing and Running on Quest](#accessing-and-running-on-quest)
@@ -20,6 +19,7 @@
 * [Sample Generated Affirmations](#sample-generated-affirmations)
 * [Training Loss Graph](#training-loss-graph)
 * [Data Preparation & Transfer](#data-preparation--transfer)
+* [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 * [Model Training on Quest (Northwestern Quest)](#model-training-on-quest-northwestern-quest)
 * [Final Scripts I Will Run](#final-scripts-i-will-run)
 * [Professor Instructions](#professor-instructions)
@@ -48,86 +48,6 @@ Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive af
 * Chatbot enhancement with emotion-sensitive replies  
 * AI-driven encouragement apps  
 * Educational tools for emotional literacy
-
----
-
-## Exploratory Data Analysis (EDA)
-This project includes several visualizations that explored some of the following:
-
-### Affirmation Tag Distribution
-![Affirmation Tag Distribution](results/eda/affirmation_tag_distribution.png)
-* Displays how frequently each tag (e.g., love, happiness, health) appears in the dataset.
-* Tags like love, blessing, and happiness dominate, suggesting common themes of encouragement.
-* Tags like money, sleep, and beauty are less represented, indicating limited training data for those tones.
-
----
-
-### Emotion Label Distribution
-![Emotion Label Distribution](results/eda/emotion_label_distribution.png)
-* Visualizes how emotional inputs (e.g., neutral, sadness, worry) are distributed.
-* The dataset skews heavily toward neutral, followed by sadness, worry, and love.
-* This skew affects the diversity of conditioning and model generalizability.
-
----
-
-### Emotion vs. Affirmation Tag Heatmap
-![Emotion vs. Affirmation Tag Heatmap](results/eda/emotion_vs_tag_heatmap.png)
-* Cross-tabulation of emotional input vs. the generated affirmation type.
-* Useful to detect if certain emotions bias toward specific responses (e.g., sadness → blessings).
-* Shows strong pairing patterns between neutral and nearly all tags, with worry and sadness also linked to spiritual or gratitude-based affirmations.
-
----
-
-### Input Length Distribution
-![Input Length Distribution](results/eda/input_length_distribution.png)
-* Histogram of character count in inputs.
-* Centered around 40–100 characters, with most tweets under the 140-character Twitter limit.
-* Helps guide padding/truncation strategies during model training.
-
----
-
-### Output Length Distribution
-![Output Length Distribution](results/eda/output_length_distribution.png)
-* Histogram of character count in affirmations.
-* Majority fall between 20–60 characters, confirming concise affirmations.
-* Informative for model generation constraints.
-
----
-
-### Input Length by Affirmation Tag
-![Input Length by Affirmation Tag](results/eda/input_length_by_affirmation_tag.png)
-* Boxplot showing variation in input length by tag.
-* money and beauty responses tend to stem from longer tweets, while love and blessing inputs are shorter and more frequent.
-
----
-
-### Total Input + Output Length Distribution
-![Total Input + Output Length Distribution](results/eda/total_input_output_length_distribution.png)
-* Confirms most total lengths remain under 200 characters.
-* Useful when verifying overall pair brevity for transformer limits.
-
----
-
-### Total Token Distribution (GPT-2 Based)
-![Total Token Distribution (GPT-2 Based)](results/eda/total_token_distribution.png)
-* Token count per input/output pair based on GPT-2 tokenizer.
-* Most pairs are under 60 tokens, far below GPT-2’s 1024-token limit, allowing ample room for padding or longer responses.
-
----
-
-### WordCloud: Input
-![WordClouds: Input](results/eda/wordCloud_input_texts.png)
-* The input word cloud shows frequent terms like "work," "now," and "think," reflecting common stressors.
-
----
-
-### WordCloud: Output
-![WordClouds: Output](results/eda/wordCloud_output_texts.png)
-* Output clouds are dominated by "love," "feel," "life," and "open," emphasizing the positive reframing used in affirmations.
-
----
-
-EDA performed in `eda_paired_dataset.ipynb` — run using [Quest Jupyter Notebook Guide](https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1791)
 
 ---
 
@@ -242,6 +162,86 @@ The GUI (built with Gradio) supports:
 * Combined tweet+affirmation data into `paired_affirmations.csv`
 * Cosine similarity computed using sentence-transformers
 * Transferred to Quest using `scp` or GitHub
+
+---
+
+## Exploratory Data Analysis (EDA)
+This project includes several visualizations that explored some of the following:
+
+### Affirmation Tag Distribution
+![Affirmation Tag Distribution](results/eda/affirmation_tag_distribution.png)
+* Displays how frequently each tag (e.g., love, happiness, health) appears in the dataset.
+* Tags like love, blessing, and happiness dominate, suggesting common themes of encouragement.
+* Tags like money, sleep, and beauty are less represented, indicating limited training data for those tones.
+
+---
+
+### Emotion Label Distribution
+![Emotion Label Distribution](results/eda/emotion_label_distribution.png)
+* Visualizes how emotional inputs (e.g., neutral, sadness, worry) are distributed.
+* The dataset skews heavily toward neutral, followed by sadness, worry, and love.
+* This skew affects the diversity of conditioning and model generalizability.
+
+---
+
+### Emotion vs. Affirmation Tag Heatmap
+![Emotion vs. Affirmation Tag Heatmap](results/eda/emotion_vs_tag_heatmap.png)
+* Cross-tabulation of emotional input vs. the generated affirmation type.
+* Useful to detect if certain emotions bias toward specific responses (e.g., sadness → blessings).
+* Shows strong pairing patterns between neutral and nearly all tags, with worry and sadness also linked to spiritual or gratitude-based affirmations.
+
+---
+
+### Input Length Distribution
+![Input Length Distribution](results/eda/input_length_distribution.png)
+* Histogram of character count in inputs.
+* Centered around 40–100 characters, with most tweets under the 140-character Twitter limit.
+* Helps guide padding/truncation strategies during model training.
+
+---
+
+### Output Length Distribution
+![Output Length Distribution](results/eda/output_length_distribution.png)
+* Histogram of character count in affirmations.
+* Majority fall between 20–60 characters, confirming concise affirmations.
+* Informative for model generation constraints.
+
+---
+
+### Input Length by Affirmation Tag
+![Input Length by Affirmation Tag](results/eda/input_length_by_affirmation_tag.png)
+* Boxplot showing variation in input length by tag.
+* money and beauty responses tend to stem from longer tweets, while love and blessing inputs are shorter and more frequent.
+
+---
+
+### Total Input + Output Length Distribution
+![Total Input + Output Length Distribution](results/eda/total_input_output_length_distribution.png)
+* Confirms most total lengths remain under 200 characters.
+* Useful when verifying overall pair brevity for transformer limits.
+
+---
+
+### Total Token Distribution (GPT-2 Based)
+![Total Token Distribution (GPT-2 Based)](results/eda/total_token_distribution.png)
+* Token count per input/output pair based on GPT-2 tokenizer.
+* Most pairs are under 60 tokens, far below GPT-2’s 1024-token limit, allowing ample room for padding or longer responses.
+
+---
+
+### WordCloud: Input
+![WordClouds: Input](results/eda/wordCloud_input_texts.png)
+* The input word cloud shows frequent terms like "work," "now," and "think," reflecting common stressors.
+
+---
+
+### WordCloud: Output
+![WordClouds: Output](results/eda/wordCloud_output_texts.png)
+* Output clouds are dominated by "love," "feel," "life," and "open," emphasizing the positive reframing used in affirmations.
+
+---
+
+EDA performed in `eda_paired_dataset.ipynb` — run using [Quest Jupyter Notebook Guide](https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1791)
 
 ---
 
