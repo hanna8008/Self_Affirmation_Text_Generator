@@ -63,5 +63,8 @@ echo "Environment activated..."
 
 
 # --- Split the Dataset into Train/Val/Test ---
-echo "Split Dataset..."
-python scripts/split_dataset.py
+### Ran this on Saturday, May 24, 2025, don't have to do this again ###
+#echo "Split Dataset..."
+#python scripts/split_dataset.py
+
+
