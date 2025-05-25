@@ -6,6 +6,6 @@ scikit-learn
 tqdm
 wordcloud
 torch
-transformers
+transformers>=4.35.0
 tensorboard
 datasets
