@@ -190,7 +190,7 @@ Checkpoints saved in `outputs/checkpoints/`, logs in `outputs/logs/`
 
 ✅ **EDA Notebook** (run via CLI):
 ```bash
-jupyter nbconvert --to notebook --execute data/eda_paired_dataset.ipynb --output outputs/eda/eda_paired_dataset.ipynb
+jupyter nbconvert --to notebook --execute data/eda_paired_dataset.ipynb --output results/eda/eda_paired_dataset.ipynb
 ```
 
 ✅ **Batch Generation**:
