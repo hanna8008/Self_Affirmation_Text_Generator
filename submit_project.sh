@@ -60,3 +60,8 @@ echo "Environment activated..."
 ### Ran this on Saturday, May 24, 2025, don't have to do this again ###
 #echo "Starting Data Downloading & Preprocessing..."
 #bash run_project.sh
+
+
+# --- Split the Dataset into Train/Val/Test ---
+echo "Split Dataset..."
+python scripts/split_dataset.py

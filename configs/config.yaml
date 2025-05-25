@@ -1,0 +1,34 @@
+# ----------------------------------------------------------------------------
+# config.yaml
+# ----------------------------------------------------------------------------
+
+# --- Model ---
+model_name: gpt2
+tokenizer_name: gpt2
+
+
+# --- Training Hyperparamters ---
+learning_rate: 5e-5
+batch_size: 0
+num_train_epochs: 5
+weight_decay: 0.01
+warmup_steps: 500
+logging_steps: 100
+save_steps: 500
+
+
+# --- Data ---
+train_file: data/train.csv
+val_file: data/val.csv
+test_file: data/tes.csv
+
+
+# --- Output ---
+output_dir: outputs/checkpoints/
+logging_dir: outputs/logs/
+
+
+# --- Runtime Settings ---
+use_gpu: true
+use_wandb: false
+seed: 42
