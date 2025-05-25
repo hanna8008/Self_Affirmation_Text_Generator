@@ -23,3 +23,4 @@ tensorboard
 gradio
 nltk
 rouge-score
+nltk

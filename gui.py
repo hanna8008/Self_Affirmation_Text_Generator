@@ -11,6 +11,13 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import yaml
 import os
 from datetime import datetime
+import re
+import nltk
+try: 
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt")
+from nltk.tokenize import sent_tokenize
 
 
 
@@ -39,26 +46,61 @@ def format_input(text, emotion=None):
 
 
 
+# --- Clean Text of Unnecessary Symbols ---
+def clean_text(text):
+    # Remove URLs, hashtags, @mentions, and excess punctuation
+    text = re.sub(r"http\S+", "", text)    
+    text = re.sub(r"#\S+", "", text)
+    text = re.sub(r"@\S+", "", text)          
+    text = re.sub(r"@\w+", "", text)                 
+    text = re.sub(r"#\w+", "", text)                
+    text = re.sub(r"\[.*?\]", "", text)              
+    text = re.sub(r"[^a-zA-Z0-9.,!?'\s]", "", text)  
+    text = re.sub(r"\s+", " ", text).strip()
+
+    #remove repeated periods or line breaks
+    text = re.sub(r"\.{2,}", ".", text)
+    text = re.sub(r"\n+", " ", text)
+
+    #tokenize into sentences
+    sentences = sent_tokenize(text)
+
+    #filter out very short or malformed sentences
+    filtered = [s.strip() for s in sentences if len(s.strip().split()) > 1 and re.search(r'a-zA-Z', s)]
+
+    #take the first 2-3 months meaningful sentences
+    return " ".join(filtered[:3]) if filtered else text.strip()
+
+
+
 # --- Generate Affirmation ---
-def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0.8, top_k=50, top_p=0.95):
+def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0.6, top_k=50, top_p=0.95):
     inputs = tokenizer(prompt, return_tensors="pt")
     inputs_ids = inputs.input_ids.to(model.device)
     attention_mask = inputs.attention_mask.to(model.device)
 
     with torch.no_grad():
         output = model.generate(
-            input_ids = inputs_ids,
-            attention_mask = attention_mask,
-            max_length = max_length,
+            input_ids=inputs_ids,
+            attention_mask=attention_mask,
+            max_length=max_length,
             temperature = temperature,
-            top_k = top_k,
-            top_p = top_p,
-            do_sample = True,
-            pad_token_id = tokenizer.pad_token_id
+            top_k=top_k,
+            top_p=top_p,
+            do_sample=True,
+            no_repeat_ngram_size=3,
+            eos_token_id=tokenizer.eos_token_id,
+            pad_token_id=tokenizer.pad_token_id
         )
 
     generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
-    return generated_text
+    prompt_text = tokenizer.decode(inputs_ids[0], skip_special_tokens=True)
+    final_generated_affirmation = generated_text[len(prompt_text):].strip()
+
+    #clean up the response
+    final_generated_affirmation = clean_text(final_generated_affirmation)
+
+    return final_generated_affirmation
 
 
 
