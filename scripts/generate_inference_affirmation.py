@@ -8,6 +8,16 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import argparse
+from datetime import datetime
+import os
+import yaml
+
+
+
+# --- Load Configuration ---
+def load_config(config_path="configs/config.yaml"):
+    with open(config_path, "r") as f:
+        return yaml.safe_load(f)
 
 
 
@@ -21,25 +31,30 @@ def load_model_and_tokenizer(model_dir):
 
 
 
+# --- Format Input (emotion conditioning optional)
+def format_input(text, emotion=None):
+    if emotion: 
+        return f"[{emotion.upper()}] {text.strip()}"
+    return text.strip()
+
+
+
  # --- Generate Affirmation ---
  def generate_affirmation(prompt, tokenizer, model, max_length=100, temperature=0.8, top_k=50, top_p=0.95):
     inputs = tokenizer(prompt, return_tensors="pt")
-    inputs_ids = inputs.input_ids
-
-    #use GPU if available
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    input_ids = input_ids.to(device)
-    model.to(device)
+    inputs_ids = inputs.input_ids.to(model.device)
+    attention_mask = inputs.attention_mask.to(model.device)
 
     with torch.no_grad():
         output = model.generate(
-            input_ids,
+            input_ids = input_ids,
+            attention_mask = attention_mask,
             max_length = max_length,
             temperature = temperature,
             top_k = top_k,
             top_p = top_p,
             do_sample = True,
-            pad_token_id = tokenizer.eos_token_id
+            pad_token_id = tokenizer.pad_token_id
         )
 
     generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
@@ -47,24 +62,42 @@ def load_model_and_tokenizer(model_dir):
 
 
 
+# --- Save Outputs to Log File ---
+def save_output_log(prompt, output, log_file="results/inference_log.txt"):
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
+    with open(log_file, "a") as f:
+        f.write(f"[{datetime.now()}]\nPrompt: {prompt}\nOutput: {output}\n\n")
+
+
+
 # --- Main Function ---
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_dir', type=str, default='outputs/checkpoints', help='Path to fine-tuned model')
-    parser.add_argument('--prompt', type=str, default=None, help='Input text prompt')
+    parser.add_argument("--model_dir", type=str, default="outputs/checkpoints", help="Path to model directory")
+    parser.add_argument("--input", type=str, help="Input text prompt (journal entry, etc.)")
+    parser.add_argument("--emotion", type=str, help="Optional emotion tag")
+    parser.add_argument("--config", default="configs/config.yaml", help="Path to config file")
+    parser.add_argument("--log_output", action="store_true", help="Log output to results folder")
     args = parser.parse_args()
 
+    config = load_config(args.config)
     tokenizer, model = load_model_and_tokenizer(args.model_dir)
 
-    if args.prompt:
-        prompt = args.prompt
+    if args.input:
+        prompt = format_input(args.input, args.emotion)
     else:
-        prompt = input("\nEnter a journal-style sentence or emotion: ")
+        raw = input("Hey, what's on your mind today? Type anything you're feeling: :")
+        mood = input("Optional mood label: ")
+        prompt = format_input(raw, mood if mood else None)
 
-    generated = generate_affirmation(prompt, tokenizer, model)
-    print("\n Generated Affirmation \n")
-    print(generated)
-    print("\n")
+    prompt = format_input(args.input, args.emotion)
+    output = generate_affirmation(prompt, tokenizer, model)
+
+    print("\n Prompt: \n", prompt)
+    print("\n Generated Affirmation \n", output)
+
+    if args.log_output:
+        save_output_log(prompt, output)
 
 
 
