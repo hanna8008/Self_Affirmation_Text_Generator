@@ -27,6 +27,13 @@ data/paired_affirmations.csv
 outputs/
 #data/sample_preview.csv
 
+# Ignore nested experiment or scratch directories
+data/data/
+
+# Ignore NLTK data you don’t need
+nltk_data/tokenizers/punkt/*.pickle
+!nltk_data/tokenizers/punkt/english.pickle  # except English, keep that
+
 data/og-emotion-detection-tweets-dataset/
 data/og-positive-affirmations-dataset/
 
