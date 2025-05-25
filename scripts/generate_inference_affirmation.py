@@ -90,7 +90,6 @@ def main():
         mood = input("Optional mood label: ")
         prompt = format_input(raw, mood if mood else None)
 
-    prompt = format_input(args.input, args.emotion)
     output = generate_affirmation(prompt, tokenizer, model)
 
     print("\n Prompt: \n", prompt)
