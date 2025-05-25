@@ -129,8 +129,8 @@ ssh -X your_netid@login.quest.northwestern.edu
 
 ### 2. Clone the Repo and Setup
 ```bash
-git clone https://github.com/hanna8008/affirmation_generator.git
-cd affirmation_generator
+git clone https://github.com/hanna8008/Self_Affirmation_Text_Generator.git
+cd Self_Affirmation_Text_Generator
 bash setup_env.sh
 conda activate affirmgen
 ```
