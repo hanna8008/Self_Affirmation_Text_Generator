@@ -52,10 +52,12 @@ Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive af
 ---
 
 ## Exploratory Data Analysis (EDA)
-This project includes several visualizations that explored the:
-* Distribution of emotion labels  
-* Most common affirmation tags  
-* Input vs. output text lengths  
+This project includes several visualizations that explored some of the following:
+
+![Affirmation Tag Distribution](results/eda/affirmation_tag_distribution.png)
+* Displays how frequently each tag (e.g., love, happiness, health) appears in the dataset.
+* Tags like love, blessing, and happiness dominate, suggesting common themes of encouragement.
+* Tags like money, sleep, and beauty are less represented, indicating limited training data for those tones.
 
 EDA performed in `eda_paired_dataset.ipynb` — run using [Quest Jupyter Notebook Guide](https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1791)
 
