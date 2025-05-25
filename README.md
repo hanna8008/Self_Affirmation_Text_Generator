@@ -77,3 +77,6 @@ Successfully paired tweet sentimnets with relevant affirmation tags using keywor
     - Average affirmation length: 40.8 characters
     - Affirmations range from 10 to 79 characters, with half being under 41 characters
     - Consistent with concise, punchy affirmation formatting suitable for GPT-2 style generation
+
+
+# Don't forget to include how I saw tesnroBoard

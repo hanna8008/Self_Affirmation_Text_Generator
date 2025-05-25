@@ -2,7 +2,7 @@
 #project account for resource tracking
 #SBATCH --account=e32706
 #job name displayed in SLURM queue
-#SBATCH --job-name=combine_data
+#SBATCH --job-name=train_gpt2
 #log file output (%j = job ID)
 #SBATCH --output=outputs/logs/train_%j.log
 #max wall time for the job
@@ -68,3 +68,7 @@ echo "Environment activated..."
 #python scripts/split_dataset.py
 
 
+
+# --- Train the GPT 2 Model ---
+echo "Training GPT-2 Model..."
+python model/train_gpt2.py --config configs/config.yaml

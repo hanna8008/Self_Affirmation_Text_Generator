@@ -7,3 +7,5 @@ tqdm
 wordcloud
 torch
 transformers
+tensorboard
+datasets
