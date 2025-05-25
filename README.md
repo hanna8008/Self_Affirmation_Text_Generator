@@ -1,9 +1,9 @@
 # Mirror Me: Self-Affirmation Text Generator Using Fine-Tuned GPT-2
 
-### Best Affirmation Example
+### Best Affirmation Example  
 [See Output Example](#sample-generated-affirmations)
 
-### How to Run the GUI and Generate Text:
+### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-on-quest)
 
 ---
@@ -44,64 +44,89 @@ Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive af
 ---
 
 ## What You Can Use This For
-* Mental health & wellness journaling tools
-* Chatbot enhancement with emotion-sensitive replies
-* AI-driven encouragement apps
+* Mental health & wellness journaling tools  
+* Chatbot enhancement with emotion-sensitive replies  
+* AI-driven encouragement apps  
 * Educational tools for emotional literacy
 
 ---
 
 ## Exploratory Data Analysis (EDA)
 This project includes several visualizations that explored the:
-* Distribution of emotion labels
-* Most common affirmation tags
-* Input vs. output text lengths
+* Distribution of emotion labels  
+* Most common affirmation tags  
+* Input vs. output text lengths  
 
 EDA performed in `eda_paired_dataset.ipynb` — run using [Quest Jupyter Notebook Guide](https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1791)
 
 ---
 
 ## Model Architecture
-* **Base Model**: GPT-2 (small)
-* **Conditioning**: Optional emotion tag (e.g., "[GRATITUDE]") prepended
-* **Loss Function**: Causal Language Modeling with CrossEntropyLoss
-* **Training Epochs**: 35
-* **Dataset Size**: 114,000+ tweet-affirmation pairs
+* **Base Model**: GPT-2 (small)  
+* **Conditioning**: Optional emotion tag (e.g., "[GRATITUDE]") prepended  
+* **Loss Function**: Causal Language Modeling with CrossEntropyLoss  
+* **Training Epochs**: 35  
+* **Dataset Size**: 114,000+ tweet-affirmation pairs  
 
 ---
 
 ## Folder Structure
+
 ```
-├── configs/
+.
+├── LICENSE
+├── README.md
+├── configs
 │   └── config.yaml
-├── data/
-│   ├── paired_affirmations.csv
-│   ├── train.csv / val.csv / test.csv
-│   └── batch_inputs.csv
-├── outputs/
-│   ├── checkpoints/
-│   ├── generated/
-│   └── logs/
-├── scripts/
-│   ├── train_gpt2.py
-│   ├── generate_batch.py
-│   ├── evaluation.py
-├── generate_inference_affirmation.py
+├── data
+│   ├── batch_inputs.csv
+│   ├── combine_affirmations_tweets_datasets.py
+│   ├── data
+│   │   ├── og-emotion-detection-tweets-dataset
+│   │   │   ├── 1
+│   │   │   │   └── tweet_emotions.csv
+│   │   │   └── tweet_emotions.csv
+│   │   ├── og-positive-affirmations-dataset
+│   │   │   ├── 2
+│   │   │   │   └── positive_affirmations
+│   │   │   │   └── possitive_affirmation.csv
+│   │   │   └── positive_affirmations
+│   │   │   └── possitive_affirmation.csv
+│   │   └── paired_affirmations.csv
+│   │   └── sample_preview.csv
+│   ├── eda_affirmations.ipynb
+│   ├── eda_paired_dataset.ipynb
+│   ├── eda_tweets.ipynb
+│   ├── sample_preview.csv
+│   ├── test.csv
+│   ├── train.csv
+│   └── val.csv
 ├── gui.py
-├── run_gui.sh
-├── setup_env.sh
-├── submit_project.sh
+├── model
+│   └── train_gpt2.py
 ├── requirements.txt
-└── eda_paired_dataset.ipynb
+├── run_gui.sh
+├── run_project.sh
+├── scripts
+│   ├── evaluation.py
+│   ├── generate_batch.py
+│   ├── generate_inference_affirmation.py
+│   └── split_dataset.py
+├── setup_env.sh 
+└── submit_project.sh
+
+
 ```
 
 ---
 
 ## Accessing and Running on Quest
+
 ### 1. Log into Quest
 ```bash
 ssh -X your_netid@login.quest.northwestern.edu
 ```
+
 ### 2. Clone the Repo and Setup
 ```bash
 git clone https://github.com/yourusername/affirmation_generator.git
@@ -118,7 +143,9 @@ bash run_gui.sh
 ---
 
 ## Extra Criteria - GUI Overview
+
 The GUI (built with Gradio) supports:
+
 * Free-text input (journal-style)
 * Optional emotion tag
 * Real-time output generation
@@ -126,6 +153,7 @@ The GUI (built with Gradio) supports:
 ---
 
 ## Sample Generated Affirmations
+
 | Input                             | Emotion   | Affirmation                                               |
 | --------------------------------- | --------- | --------------------------------------------------------- |
 | I'm feeling stuck and overwhelmed | worry     | I trust that everything is unfolding for my highest good. |
@@ -134,63 +162,79 @@ The GUI (built with Gradio) supports:
 ---
 
 ## Training Loss Graph
+
 ![Training Loss](outputs/logs/train_loss.png)
 
 ---
 
 ## Data Preparation & Transfer
+
 * Combined tweet+affirmation data into `paired_affirmations.csv`
 * Cosine similarity computed using sentence-transformers
-* Transferred to Quest using `scp` or Git
+* Transferred to Quest using `scp` or GitHub
 
 ---
 
 ## Model Training on Quest (Northwestern Quest)
+
 Run the following:
 ```bash
 bash submit_project.sh
 ```
+
 Checkpoints saved in `outputs/checkpoints/`, logs in `outputs/logs/`
 
 ---
 
 ## Final Scripts I Will Run
-✅ EDA:
+
+✅ **EDA Notebook** (run via CLI):
 ```bash
-jupyter nbconvert --to notebook --execute eda_paired_dataset.ipynb
+jupyter nbconvert --to notebook --execute data/eda_paired_dataset.ipynb --output outputs/eda/eda_paired_dataset.ipynb
 ```
 
-✅ Batch Generation:
+✅ **Batch Generation**:
 ```bash
-python scripts/generate_batch.py --input data/batch_inputs.csv --config configs/config.yaml --log_output outputs/generated/generated_affirmations.csv
+python scripts/generate_batch.py \
+  --input data/batch_inputs.csv \
+  --config configs/config.yaml \
+  --log_output outputs/generated/generated_affirmations.csv
 ```
 
-✅ Evaluation:
+**Evaluation**:
 ```bash
-python scripts/evaluation.py --predicted outputs/generated/generated_affirmations.csv --reference data/batch_inputs.csv --save_path results/eval_metrics.json
+python scripts/evaluation.py \
+  --predicted outputs/generated/generated_affirmations.csv \
+  --reference data/batch_inputs.csv \
+  --save_path results/eval_metrics.json
 ```
 
 ---
 
 ## Professor Instructions
-After logging in, simply:
+
+After logging into Quest, please run only:
 ```bash
 conda activate affirmgen
 bash run_gui.sh
 ```
 
-Nothing else needs to be run manually. GUI will open with trained model and display output.
+The Gradio interface will open automatically with the fine-tuned model loaded.  
+No additional training, installation, or evaluation steps are needed.
 
 ---
 
 ## Future Improvements
+
 * Expand emotion conditioning with multi-label support
 * Integrate journaling streak tracker
 * Add metric dashboard (BLEU, ROUGE, Cosine)
+* Deploy to HuggingFace Spaces for web access
 
 ---
 
 ## References and Tools Used
+
 1. [Hugging Face Transformers](https://huggingface.co/transformers/)
 2. [Sentence Transformers](https://www.sbert.net/)
 3. [Gradio](https://gradio.app/)
