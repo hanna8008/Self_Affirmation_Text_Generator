@@ -62,6 +62,20 @@ def format_input(text, emotion=None):
 def affirmation(journal_text, emotion_tag):
     prompt = format_input(journal_text, emotion_tag)
     generate = generate_affirmation(prompt, tokenizer, model)
+
+    #save to results/affirmations_generated/inference_gui_log
+    os.makedirs("results", exist_ok=True)
+    timestamp = datetiem.now().strftime("%Y%m%d_%H%M%S")
+
+    #clean file-safe version of the prompt
+    safe_prompt = journal_text[:30].replace(" ", "_").replace("/", "_")
+    safe_emotion = emotion_tag.replace(" ", "_") if emotion_tag else "none"
+
+    filename = f"results/affirmations_generated/inference_{safe_prompt}_{safe_emotion}_{timestamp}.txt"
+
+    with open(filename, "w") as f:
+        f.write(f"[{datetime.now()}]\nPrompt: {prompt}\nOutput: {generate}\n\n")
+
     return generate
 
 
