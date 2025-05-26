@@ -314,3 +314,17 @@ No additional training, installation, or evaluation steps are needed.
 2. [Sentence Transformers](https://www.sbert.net/)
 3. [Gradio](https://gradio.app/)
 4. [Northwestern Quest](https://www.it.northwestern.edu/departments/it-services-support/research/computing/quest/index.html)
+
+
+
+## Left To Do as of Sunday, May 25 Night
+1. Update comments
+2. Edit README.md
+  - Edit sample generated affirmations from actual GUI
+  - Ensure all instructions are corrected and run on local computer
+  - Add bulk affirmations and evaluation (Cosine Similarity, BLEU, ROUGE-1, ROUGE-L)
+  - Alter folder structure
+  - How to run the GUI
+  - Put explanation of each file and folder
+  - Put my best generated text into README.md
+  - Any conclusions or observations from training
