@@ -1,9 +1,21 @@
-# Byte-compiled / cache / logs
+# ----------------------------------------------------------------------------
+# .gitignore
+# ----------------------------------------------------------------------------
+#
+# This file lists patterns for files and directories that should not be tracked
+# by Git. It prevents clutter in version control by ignoring cache, logs, envrionment
+# files, large datasets, model outputs, and temporary artifacts.
+
+
+
+# --- Byte-compiled / Cache / Logs ---
 __pycache__/
 *.py[cod]
 *.log
 
-# Environment files
+
+
+# --- Environment Files ---
 .env
 *.env
 .venv/
@@ -13,37 +25,51 @@ env/
 *.ipynb_checkpoints/
 affirmgen/
 
-# OS-generated files
+
+
+# --- OS-Generated Files ---
 .DS_Store
 Thumbs.db
 
-# Jupyter Notebook junk
+
+
+# --- Jupyter Notebook Junk ---
 .ipynb_checkpoints/
 
-# Large output or data artifacts
+
+
+# --- Large Output or Data Artifacts ---
 data/data/og-positive-affirmations-dataset/
 data/data/og-emotion-detection-tweets-dataset/
 data/paired_affirmations.csv
 outputs/
 #data/sample_preview.csv
 
-# Ignore nested experiment or scratch directories
+
+
+# --- Ignore Nested Experiment or Scratch Directories ---
 data/data/
 
-# Ignore NLTK data you don’t need
-nltk_data/tokenizers/punkt/*.pickle
-!nltk_data/tokenizers/punkt/english.pickle  # except English, keep that
 
+
+# --- Backup in Case Folders were Copied Elsewhere Manually ---
 data/og-emotion-detection-tweets-dataset/
 data/og-positive-affirmations-dataset/
 
-# If using Quest or cluster logs
+
+
+# --- Using Quest ---
 *.o*
 *.e*
 .slurm*
 
-# Model files (future training)
+
+
+# --- Model Files ---
 *.pt
 *.ckpt
 
+
+
+# --- Directory for Unusable Generated Data ---
 flagged/
