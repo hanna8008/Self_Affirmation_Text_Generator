@@ -22,7 +22,6 @@
 * [Exploratory Data Analysis (EDA) of Combined Dataset](#exploratory-data-analysis-eda)
 * [Model Training on Quest (Northwestern Quest)](#model-training-on-quest-northwestern-quest)
 * [Final Scripts I Will Run](#final-scripts-i-will-run)
-* [Professor Instructions](#professor-instructions)
 * [Future Improvements](#future-improvements)
 * [References and Tools Used](#references-and-tools-used)
 
@@ -286,16 +285,26 @@ python scripts/evaluation.py \
 
 ---
 
-## Professor Instructions
 
-After logging into Quest, please run only:
-```bash
-conda activate affirmgen
-bash run_gui.sh
-```
+## Evaluation Metrics
+* Cosine Similarity: measures semantic similarity between the input (user's journal-like entry) and generated affirmation using sentence embeddings
+* BLEU Score: captures n-gram overlap between input and output
+* ROUGE Score: evaluates overlap of unigrams (ROUGE-1) and longest common subsequence (ROUGE-L) to assess how much of the input is reflected in the generated affirmation
 
-The Gradio interface will open automatically with the fine-tuned model loaded.  
-No additional training, installation, or evaluation steps are needed.
+### Results Summary
+
+| **Metric**             | **Average** | **Best**   |
+|------------------------|-------------|------------|
+| Cosine Similarity      | 0.2636      | 0.4982     |
+| BLEU Score             | 0.0076      | 0.0109     |
+| ROUGE-1 (Unigrams)     | 0.1616      | 0.2000     |
+| ROUGE-L (LCS)          | 0.1365      | 0.1905     |
+
+### Interpretation
+* While average scores reflect modest alignment, the best-case scores reveal strong potential in generating affirmations that are semantically aligned with a user's input
+* Cosine Similarity peaking at ~0.5 indicates some affirmations were meaningfully relate to the journal entry
+* BLEU and ROUGE scores are low due to the generative nature of the task, as affirmations are meant to reframe, not mimic, the input. Hence, lower n-gram overlap is normal and not necessarily a performance issue
+* These results suggest the model can deliver insightful, uplifitng responses for emotionally negative input, even when phrasing varies widely
 
 ---
 
