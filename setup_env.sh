@@ -37,8 +37,5 @@ echo "Environment '$ENV_NAME' activated."
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Download NLTK resources
-python -m nltk.downloader punkt
-echo "NLTK Punkt downloaded"
 
 echo "Environment '$ENV_NAME' is fully set up!"

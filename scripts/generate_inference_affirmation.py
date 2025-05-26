@@ -12,12 +12,6 @@ from datetime import datetime
 import os
 import re
 import yaml
-import nltk
-try: 
-    nltk.data.find("tokenizers/punkt")
-except LookupError:
-    nltk.download("punkt")
-from nltk.tokenize import sent_tokenize
 
 
 
@@ -50,27 +44,34 @@ def format_input(text, emotion=None):
 # --- Clean Text of Unnecessary Symbols ---
 def clean_text(text):
     # Remove URLs, hashtags, @mentions, and excess punctuation
-    text = re.sub(r"http\S+", "", text)    
-    text = re.sub(r"#\S+", "", text)
-    text = re.sub(r"@\S+", "", text)          
-    text = re.sub(r"@\w+", "", text)                 
-    text = re.sub(r"#\w+", "", text)                
-    text = re.sub(r"\[.*?\]", "", text)              
-    text = re.sub(r"[^a-zA-Z0-9.,!?'\s]", "", text)  
-    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"http\S+", "", text)         # URLs
+    text = re.sub(r"[@#]\w+", "", text)         # Hashtags and mentions
+    text = re.sub(r"\[.*?\]", "", text)         # Anything in brackets
+    text = re.sub(r"[^\w\s.,!?'\-]", "", text)  # Non-standard symbols
+    text = re.sub(r"\s+", " ", text).strip()    # Normalize spaces
 
-    #remove repeated periods or line breaks
+    # Remove repeated punctuation or line breaks
     text = re.sub(r"\.{2,}", ".", text)
     text = re.sub(r"\n+", " ", text)
 
-    #tokenize into sentences
-    sentences = sent_tokenize(text)
+    # Split by punctuation that likely ends a sentence
+    sentences = re.split(r'[.!?]', text)
+    senteces = [s.strip() for s in sentences if s.strip()]
 
-    #filter out very short or malformed sentences
-    filtered = [s.strip() for s in sentences if len(s.strip().split()) > 1 and re.search(r'a-zA-Z', s)]
+    # Filter rules: remove toxic or non-affirming lines
+    forbidden_phrases = [
+        "why can't i", "why do they", "everyone else", "nobody", "hate myself",
+        "ugly", "fat", "kill", "better than", "they all", "no one", "not loved"
+    ]
 
-    #take the first 2-3 months meaningful sentences
-    return " ".join(filtered[:3]) if filtered else text.strip()
+    # Filter: remove empty or meaningless chunks
+    filtered = [
+        s for s in sentences
+        if len(s.split()) > 2 and not any(phrase in s.lower() for phrase in forbidden_phrases)
+    ]
+
+    # Rejoin the first 2-3 meaningful sentences with periods
+    return ". ".join(filtered[:3]) + "." if filtered else text.strip()
 
 
 
