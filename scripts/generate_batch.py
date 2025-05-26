@@ -22,8 +22,8 @@ model.eval()
 
 
 # --- Load input CSV ---
-"""df = pd.read_csv("data/test.csv")
-results = []"""
+"""df = pd.read_csv("data/test.csv")"""
+results = []
 df = pd.read_csv(sys.argv[1])
 output_file = sys.argv[2]
 

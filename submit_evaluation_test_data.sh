@@ -4,7 +4,7 @@
 #job name displayed in SLURM queue
 #SBATCH --job-name=run_test_data_for_results_and_evaluation
 #log file output (%j = job ID)
-#SBATCH --output=outputs/logs/train_%j.log
+#SBATCH --output=outputs/logs/test_eval_%j.log
 #max wall time for the job
 #SBATCH --time=48:00:00
 #GPU partition to use
