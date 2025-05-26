@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# evaluation.py
+# run_project.sh
 # ----------------------------------------------------------------------------
 # 
 # A shell script that runs the dataset preprocessing pipeline. It executes the 

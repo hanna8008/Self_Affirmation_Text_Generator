@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# evaluation.py
+# setup_env.sh
 # ----------------------------------------------------------------------------
 #
 # Sets up a Conda envrionment named 'affirmgen' with Python 3.9, installs all

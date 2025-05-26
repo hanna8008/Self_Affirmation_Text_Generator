@@ -1,3 +1,15 @@
+# ----------------------------------------------------------------------------
+# submit_project.sh
+# ----------------------------------------------------------------------------
+#
+# Submits a SLURM job to fine-tune the GPT-2 model on Quest. It specifies resource
+# requirements, activates the correct Conda envrionment, and executes the training 
+# script with logging and version checks. It originally also executed two jobs, 
+# but those jobs only needed to be ran once so they have been commented out: 
+# download & preprocess the data and split the datasets.  
+
+
+
 #!/bin/bash
 #project account for resource tracking
 #SBATCH --account=e32706
@@ -21,7 +33,7 @@
 
 
 
-# --- Status Messagess ---
+# --- Status Logging ---
 echo "Starting .sh file"
 echo "SLURM Job ID: $SLURM_JOB_ID"
 echo "Log file: outputs/logs/combine_data_${SLURM_JOB_ID}.log"
@@ -29,13 +41,9 @@ echo "Log file: outputs/logs/combine_data_${SLURM_JOB_ID}.log"
 
 
 # --- Load Conda Envrionment ---
-#unload existing modules to avoid conflicts
-#module purge
-#module load anaconda3
-
-#activate the desired Conda envrionment for training 
-#source $(conda info --base)/etc/profile.d/conda.sh
+#load Conda into shell
 source ~/miniconda3/etc/profile.d/conda.sh
+#activate 'affirmgen' envrionment
 conda activate affirmgen
 
 echo "Conda envrionemnt 'affirmgen' activated."
@@ -74,4 +82,5 @@ echo "Environment activated..."
 
 # --- Train the GPT 2 Model ---
 echo "Training GPT-2 Model..."
+#triggers model training using the configuration file and preprocessed dataset
 python model/train_gpt2.py --config configs/config.yaml
