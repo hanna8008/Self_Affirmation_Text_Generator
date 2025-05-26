@@ -1,3 +1,12 @@
+# ----------------------------------------------------------------------------
+# evaluation.py
+# ----------------------------------------------------------------------------
+# 
+# A shell script that runs the dataset preprocessing pipeline. It executes the 
+# script that builds the final paired dataset from raw affirmations and tweets.
+
+
+
 #!/bin/bash
 
 # --- Activate Envrionment ---
@@ -6,6 +15,3 @@
 # --- Step 1: Download and Preprocess ---
 echo "Running data preparation..."
 python data/combine_affirmations_tweets_datasets.py
-
-# Optional: Step 2: Run EDA
-# jupyter nbconvert --execute --to notebook data/paired_dataset_eda.ipynb --output data/eda_affirmations_tweets.ipynb
