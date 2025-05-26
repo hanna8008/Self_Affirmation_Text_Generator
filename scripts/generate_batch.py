@@ -8,6 +8,7 @@
 import pandas as pd
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
+import sys
 from generate_inference_affirmation import format_input, generate_affirmation, load_config
 
 
@@ -21,8 +22,10 @@ model.eval()
 
 
 # --- Load input CSV ---
-df = pd.read_csv("data/batch_inputs.csv")
-results = []
+"""df = pd.read_csv("data/test.csv")
+results = []"""
+df = pd.read_csv(sys.argv[1])
+output_file = sys.argv[2]
 
 
 
@@ -42,5 +45,5 @@ for _, row in df.iterrows():
 
 # --- Save Results ---
 output_df = pd.DataFrame(results)
-output_df.to_csv("results/batch_affirmations_2.csv", index=False)
-print("Batch generation complete. Output saved to results/batch_affirmations_2.csv")
+output_df.to_csv(output_file, index=False)
+print("Batch generation complete for test.csv")

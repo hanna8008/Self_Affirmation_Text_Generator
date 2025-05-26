@@ -1,34 +1,54 @@
 # ----------------------------------------------------------------------------
 # config.yaml
 # ----------------------------------------------------------------------------
+#
+# This YAML file centralizes configuration for training, generation, evaluation,
+# and logging. It is important by all major scripts to ensure reproducibility.
+
+
 
 # --- Model ---
+#pretrained model architecture to fine-tune (HuggingFace model hub ID)
 model_name: gpt2
+#tokenizer associated with the model (typically matches model_name)
 tokenizer_name: gpt2
 
 
 # --- Training Hyperparamters ---
+#learning rate for the optimizer during training
 learning_rate: 5e-5
+#number of samples processed before updating model weights
 batch_size: 4
+#total numberof times to loop through the training data
 num_train_epochs: 35
+#L2 regularization to prevent overfitting
 weight_decay: 0.01
+#number of initial steps to gradually increase the learning rate
 warmup_steps: 500
+#interval for logging training metrics
 logging_steps: 100
+#interval for saving model checkpoints
 save_steps: 500
 
 
 # --- Data ---
+#path to training dataset
 train_file: data/train.csv
+#path to validation dataset used for evaluation during training
 val_file: data/val.csv
+#path to test dataset (not used in training loop, but for later evaluation)
 test_file: data/test.csv
 
 
 # --- Output ---
+#directory to save fine-tuned model checkpoints
 output_dir: outputs/checkpoints/
+#directory to save training logs and event files
 logging_dir: outputs/logs/
 
 
 # --- Runtime Settings ---
+#whether to use GPU (CUDA) if available
 use_gpu: true
-use_wandb: false
+#random seed for reproducibility across training runs
 seed: 42

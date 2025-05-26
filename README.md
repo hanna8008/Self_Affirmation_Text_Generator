@@ -83,9 +83,7 @@ Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive af
 │   │   │   └── possitive_affirmation.csv
 │   │   └── paired_affirmations.csv
 │   │   └── sample_preview.csv
-│   ├── eda_affirmations.ipynb
 │   ├── eda_paired_dataset.ipynb
-│   ├── eda_tweets.ipynb
 │   ├── sample_preview.csv
 │   ├── test.csv
 │   ├── train.csv
@@ -291,7 +289,7 @@ python scripts/evaluation.py \
 * BLEU Score: captures n-gram overlap between input and output
 * ROUGE Score: evaluates overlap of unigrams (ROUGE-1) and longest common subsequence (ROUGE-L) to assess how much of the input is reflected in the generated affirmation
 
-### Results Summary
+### Results Summary - run on results/batch_affirmations.csv, generated from batch_inputs.csv
 
 | **Metric**             | **Average** | **Best**   |
 |------------------------|-------------|------------|

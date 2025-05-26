@@ -6,6 +6,7 @@
 
 # --- Imports ---
 import pandas as pd
+import sys
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -16,7 +17,9 @@ from rouge_score import rouge_scorer
 
 # --- Load Results ---
 #load generated affirmations and their original input text
-df = pd.read_csv("results/batch_affirmations.csv")
+"""df = pd.read_csv("results/batch_affirmations.csv")"""
+df = pd.read_csv(sys.argv[1])
+output_file = sys.argv[2]
 
 
 
@@ -99,4 +102,5 @@ print(f"Best ROUGE-L: {df['ROUGE-L'].max():.4f}")
 
 # --- Save to New File ---
 #save all scores with outputs
-df.to_csv("results/batch_affirmations_evaluated.csv", index=False)
+"""df.to_csv("results/batch_affirmations_evaluated.csv", index=False)"""
+df.to_csv(output_file, index=False)

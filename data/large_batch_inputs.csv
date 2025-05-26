@@ -1,0 +1,17 @@
+Input,Emotion
+"I feel numb and disconnected from everything", empty,
+"I'm not really feeling anything at all today", neutral,
+"I can't stop crying and I don't know why", sadness,
+"Everything feels pointles and I'm so tired of it all", sadness,
+"I'm so anxious I can't think straight", worry,
+"I'm nervous and can't calm down", worry,
+"I hate the way I look", hate,
+"Why does everyone else have it together but me?", worry,
+"I feel so alone in a room full of people", empty,
+"I'm not mad, just exhausted by everyone's expectations", neutral,
+"I'm bored of everything, nothing excites me anymore", boredom,
+"I'm furious at how unfair life is", anger,
+"I snapped at someone I love and I hate myself for it", hate,
+"I feel like a burden", sadness,
+"No one would notice if I disappeared", sadness,
+"I just want a break from my own thoughts", worry, neutral

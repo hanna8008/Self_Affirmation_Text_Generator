@@ -1,6 +1,6 @@
 Input,Emotion
-"I'm feeling really anxious about tomorrow",
-"I can't sleep and my mind is racing",
-"I feel invisible and forgotten",
-"Everything I do feels like it's not enough",
-"I look in the mirror and hate what I see"
+"I'm feeling really anxious about tomorrow", worry,
+"I can't sleep and my mind is racing", anger,
+"I feel invisible and forgotten", sadness,
+"Everything I do feels like it's not enough", empty,
+"I look in the mirror and hate what I see", hate
