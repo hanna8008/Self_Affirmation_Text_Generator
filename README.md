@@ -153,7 +153,12 @@ The GUI (built with Gradio) supports:
 
 ## Training Loss Graph
 
-![Training Loss](outputs/logs/train_loss.png)
+![Training Loss](results/training_loss_curve.png)
+
+* This graph visualizes training and validation loss over time, helping monitor model learning and check for overfitting during GPT-2 fine-tuning
+* Training loss decreased from 4.79 to 4.38, showing that the model is learning; the single validation loss point at ~4.13 suggests decent generalization
+* Only one validation point was logged, so future improvements include enabling more frequent validation logging to plot a full curve
+
 
 ---
 
