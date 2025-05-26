@@ -45,3 +45,5 @@ data/og-positive-affirmations-dataset/
 # Model files (future training)
 *.pt
 *.ckpt
+
+flagged/
