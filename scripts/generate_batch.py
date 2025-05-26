@@ -42,5 +42,5 @@ for _, row in df.iterrows():
 
 # --- Save Results ---
 output_df = pd.DataFrame(results)
-output_df.to_csv("results/batch_affirmations.csv", index=False)
+output_df.to_csv("results/batch_affirmations_2.csv", index=False)
 print("Batch generation complete. Output saved to results/batch_affirmations_2.csv")
