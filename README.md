@@ -14,14 +14,13 @@
 * [What You Can Use This For](#what-you-can-use-this-for)
 * [Model Architecture](#model-architecture)
 * [Folder Structure](#folder-structure)
-* [Accessing and Running on Quest](#accessing-and-running-on-quest)
+* [Accessing and Running Project on Quest](#accessing-and-running-on-quest)
 * [Extra Criteria - GUI Overview](#extra-criteria---gui-overview)
 * [Sample Generated Affirmations](#sample-generated-affirmations)
 * [Training Loss Graph](#training-loss-graph)
 * [Data Preparation & Transfer](#data-preparation--transfer)
 * [Exploratory Data Analysis (EDA) of Combined Dataset](#exploratory-data-analysis-eda)
-* [Model Training on Quest (Northwestern Quest)](#model-training-on-quest-northwestern-quest)
-* [Final Scripts I Will Run](#final-scripts-i-will-run)
+* [Model Training on Quest](#model-training-on-quest-northwestern-quest)
 * [Future Improvements](#future-improvements)
 * [References and Tools Used](#references-and-tools-used)
 
@@ -107,7 +106,7 @@ Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive af
 
 ---
 
-## Accessing and Running on Quest
+## Accessing and Running Project on Quest
 
 ### 1. Log into Quest
 ```bash
@@ -255,31 +254,6 @@ bash submit_project.sh
 ```
 
 Checkpoints saved in `outputs/checkpoints/`, logs in `outputs/logs/`
-
----
-
-## Final Scripts I Will Run
-
-✅ **EDA Notebook** (run via CLI):
-```bash
-jupyter nbconvert --to notebook --execute data/eda_paired_dataset.ipynb --output results/eda/eda_paired_dataset.ipynb
-```
-
-✅ **Batch Generation**:
-```bash
-python scripts/generate_batch.py \
-  --input data/batch_inputs.csv \
-  --config configs/config.yaml \
-  --log_output outputs/generated/generated_affirmations.csv
-```
-
-✅ **Evaluation**:
-```bash
-python scripts/evaluation.py \
-  --predicted outputs/generated/generated_affirmations.csv \
-  --reference data/batch_inputs.csv \
-  --save_path results/eval_metrics.json
-```
 
 ---
 
