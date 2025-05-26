@@ -1,13 +1,24 @@
-# Core Libraries
+# ----------------------------------------------------------------------------
+# requirements.txt
+# ----------------------------------------------------------------------------
+# 
+# Lists all Python libraries required to run the affirmation generator project.
+# Includes model training, inference, EDA, visualization, GUI, and evaluation
+# tools. Specific versions are pinned where necessary to ensure compatibility.
+
+
+
+# --- Core Libraries ---
 torch
 transformers==4.39.3
 datasets
-# Downgraded to avoid conflict
 sentence-transformers>=2.2.2
 tokenizers
 accelerate==0.27.2
 
-# Data + EDA
+
+
+# --- Data + EDA ---
 pandas
 numpy
 scikit-learn
@@ -18,7 +29,9 @@ wordcloud
 pyyaml
 notebook
 
-# Additional Libraries
+
+
+# --- Additional Libraries ---
 tensorboard
 gradio
 nltk
