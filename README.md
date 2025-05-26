@@ -61,47 +61,67 @@ Fine-tunes a GPT-2 model on a paired dataset of emotional tweets and positive af
 ## Folder Structure
 
 ```
-.
-├── LICENSE
-├── README.md
-├── configs
+Self_Affirmation_Text_Generator/
+├── configs/
 │   └── config.yaml
-├── data
+├── data/
 │   ├── batch_inputs.csv
 │   ├── combine_affirmations_tweets_datasets.py
-│   ├── data
-│   │   ├── og-emotion-detection-tweets-dataset
-│   │   │   ├── 1
-│   │   │   │   └── tweet_emotions.csv
-│   │   │   └── tweet_emotions.csv
-│   │   ├── og-positive-affirmations-dataset
-│   │   │   ├── 2
-│   │   │   │   └── positive_affirmations
-│   │   │   │   └── possitive_affirmation.csv
-│   │   │   └── positive_affirmations
-│   │   │   └── possitive_affirmation.csv
-│   │   └── paired_affirmations.csv
-│   │   └── sample_preview.csv
 │   ├── eda_paired_dataset.ipynb
+│   ├── large_batch_inputs.csv
+│   ├── og-emotion-detection-tweets-dataset/
+│   │   └── tweet_emotions.csv
+│   ├── og-positive-affirmations-dataset/
+│   │   └── possitive_affirmation.csv
+│   ├── paired_affirmations.csv
 │   ├── sample_preview.csv
 │   ├── test.csv
 │   ├── train.csv
 │   └── val.csv
-├── gui.py
-├── model
+├── flagged/
+├── model/
 │   └── train_gpt2.py
-├── requirements.txt
-├── run_gui.sh
-├── run_project.sh
-├── scripts
+├── outputs/
+│   ├── checkpoints/
+│   │   ├── checkpoint-389640/
+│   │   └── checkpoint-802200/
+│   └── logs/
+│       └── (SLURM + TensorBoard logs)
+├── results/
+│   ├── affirmations_generated/
+│   │   └── inference_*.txt
+│   ├── batch_affirmations.csv
+│   ├── batch_affirmations_evaluated.csv
+│   ├── training_loss_curve.png
+│   └── eda/
+│       ├── affirmation_tag_distribution.png
+│       ├── emotion_label_distribution.png
+│       ├── emotion_vs_tag_heatmap.png
+│       ├── input_length_by_affirmation_tag.png
+│       ├── input_length_distribution.png
+│       ├── output_length_distribution.png
+│       ├── total_input_output_length_distribution.png
+│       ├── total_token_distribution.png
+│       ├── wordCloud_input_texts.png
+│       └── wordCloud_output_texts.png
+├── scripts/
 │   ├── evaluation.py
 │   ├── generate_batch.py
 │   ├── generate_inference_affirmation.py
+│   ├── plot_loss.py
 │   └── split_dataset.py
-├── setup_env.sh 
+├── static/
+│   └── heart_icon.png
+├── .gitignore
+├── gui.py
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── run_gui.sh
+├── run_project.sh
+├── setup_env.sh
+├── submit_evaluation_test_data.sh
 └── submit_project.sh
-
-
 ```
 
 ---
