@@ -158,16 +158,27 @@ The GUI (built with Gradio) supports:
 
 ---
 
-## Best Generated Affirmation
+## Best Generated Affirmation(s): With and Without Emotion Entry
+| Input                             | Emotion   | Affirmation                                                                                       |
+| --------------------------------- | --------- | ------------------------------------------------------------------------------------------------- |
+| I feel so ugly today              |           | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
+| I feel so ugly today              |           | This is not good. Why am I so gorgeous. Why am my beauty so beautiful.                            |
+| I feel so ugly today              | sad       | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
 
 
 ## Generated Affirmations
 
-| Input                             | Emotion   | Affirmation                                               |
-| --------------------------------- | --------- | --------------------------------------------------------- |
-| I feel so ugly today              |           | I trust that everything is unfolding for my highest good. |
-| I'm grateful for my progress      | gratitude | I honor how far I’ve come and welcome all that's ahead.   |
+### Sad Inputs: With vs. Without Emotion Entry
+| Input                                      | Emotion | Affirmation                                                                                                     |
+| ------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
+| I feel so alone                            | sad     | At the moment M'oultas are so sad. I am so grateful for supportive friends and a loving family. I am experiencing wonderful miracles of love and friendships. |
+| I feel so alone                            |         | Without my camera. I am romantically contented and open to receive something wonderful today. It is time to start my own garden. |
+| I cried myself to sleep again last night   | sad     | I feel God in my heart and in my life. I am overcome with gratitude for the bliss that fills my life today. I am worthy of feeling happy. |
+| I cried myself to sleep again last night   |         | I feel blessed today. I am overcome with gratitude for the bliss that fills my life. The happiness I feel is felt by everyone around me. |
+| Even when I'm with people, I still feel alone | sad  | I feel God in my heart and in my life. I feel great joy and happiness. I am worthy of feeling happy. |
+| Even when I'm with people, I still feel alone |       | I feel happy with myself as a person. I overcome everything I can't control. Just give me my 3 points—I feel great joy and happiness. |
 
+<<<<<<< HEAD
 | Input                             | Emotion   | Affirmation                                                                                       |
 | --------------------------------- | --------- | ------------------------------------------------------------------------------------------------- |
 | I feel so ugly today              |           | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
@@ -182,6 +193,8 @@ The GUI (built with Gradio) supports:
 2. I cried myself to sleep again last night | |  I feel blessed today.  I am overcome with gratitude for the bliss that fills my life.  The happiness I feel is felt by everyone around me.
 3. Even when I'm with people, I still feel alone | sad |  I feel God in my heart and in my life.  I feel great joy and happiness.  I am worthy of feeling happy.
 3. Even when I'm with people, I still feel alone | | I feel happy with myself as a person.  I overcome everything I cant control.  Just give me my 3 points I feel great joy and happiness.
+=======
+>>>>>>> 7e6bb773317cfe65ea19fcc111b424003f943582
 
 
 
