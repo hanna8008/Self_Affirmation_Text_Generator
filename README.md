@@ -278,25 +278,32 @@ Checkpoints saved in `outputs/checkpoints/`, logs in `outputs/logs/`
 ---
 
 
-## Evaluation Metrics
-* Cosine Similarity: measures semantic similarity between the input (user's journal-like entry) and generated affirmation using sentence embeddings
-* BLEU Score: captures n-gram overlap between input and output
-* ROUGE Score: evaluates overlap of unigrams (ROUGE-1) and longest common subsequence (ROUGE-L) to assess how much of the input is reflected in the generated affirmation
 
-### Results Summary - run on results/batch_affirmations.csv, generated from batch_inputs.csv
+## Evaluation Metrics (Test Set)
+
+The model's ability to generate relevant and uplifting affirmations was evaluated using three key metrics:
+
+- **Cosine Similarity**: Measures semantic alignment between journal input and the generated affirmation using sentence embeddings.
+- **BLEU Score**: Captures token-level n-gram overlap; useful for structural similarity but often low in creative generation tasks like affirmations.
+- **ROUGE Score**: Assesses overlap in unigrams (ROUGE-1) and sequence structure (ROUGE-L), indicating how much of the input’s language is preserved in the output.
+
+### Results Summary
 
 | **Metric**             | **Average** | **Best**   |
 |------------------------|-------------|------------|
-| Cosine Similarity      | 0.2636      | 0.4982     |
-| BLEU Score             | 0.0076      | 0.0109     |
-| ROUGE-1 (Unigrams)     | 0.1616      | 0.2000     |
-| ROUGE-L (LCS)          | 0.1365      | 0.1905     |
+| Cosine Similarity      | 0.1908      | 0.6716     |
+| BLEU Score             | 0.0054      | 0.0609     |
+| ROUGE-1 (Unigrams)     | 0.0841      | 0.4324     |
+| ROUGE-L (LCS)          | 0.0706      | 0.3243     |
+
+---
 
 ### Interpretation
-* While average scores reflect modest alignment, the best-case scores reveal strong potential in generating affirmations that are semantically aligned with a user's input
-* Cosine Similarity peaking at ~0.5 indicates some affirmations were meaningfully relate to the journal entry
-* BLEU and ROUGE scores are low due to the generative nature of the task, as affirmations are meant to reframe, not mimic, the input. Hence, lower n-gram overlap is normal and not necessarily a performance issue
-* These results suggest the model can deliver insightful, uplifitng responses for emotionally negative input, even when phrasing varies widely
+
+- Although average scores are modest (as expected for a creative text task), the **best-case metrics show that some affirmations were highly aligned and meaningful**.
+- A **Cosine Similarity of 0.67** at best reflects strong semantic understanding.
+- **ROUGE-1 and ROUGE-L** scores indicate that certain outputs preserved emotional cues or language structure from the inputs.
+- **Low BLEU scores are acceptable** for this domain, as high-quality affirmations typically use rephrasing, encouragement, and abstraction instead of direct repetition.
 
 ---
 
