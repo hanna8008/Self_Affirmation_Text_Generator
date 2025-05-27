@@ -178,28 +178,9 @@ The GUI (built with Gradio) supports:
 | Even when I'm with people, I still feel alone | sad  | I feel God in my heart and in my life. I feel great joy and happiness. I am worthy of feeling happy. |
 | Even when I'm with people, I still feel alone |       | I feel happy with myself as a person. I overcome everything I can't control. Just give me my 3 points—I feel great joy and happiness. |
 
-<<<<<<< HEAD
-| Input                             | Emotion   | Affirmation                                                                                       |
-| --------------------------------- | --------- | ------------------------------------------------------------------------------------------------- |
-| I feel so ugly today              |           | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
-| I feel so ugly today              |           | This is not good. Why am I so gorgeous. Why am my beauty so beautiful.                            |
-| I feel so ugly today              | sad       | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
-
-
-* Sad
-1. I feel so alone | sad | at the moment M'oultas are so sad. I am so grateful for supportive friends and a loving family. I am experiencing wonderful miracles of love and friendships.
-1. I feel so alone | ___ | without my camera.  I am romantically contented and open to receive something wonderful today.  It is time to start my own garden.
-2. I cried myself to sleep again last night | sad |  I feel God in my heart and in my life.  I am overcome with gratitude for the bliss that fills my life today.  I am worthy of feeling happy.
-2. I cried myself to sleep again last night | |  I feel blessed today.  I am overcome with gratitude for the bliss that fills my life.  The happiness I feel is felt by everyone around me.
-3. Even when I'm with people, I still feel alone | sad |  I feel God in my heart and in my life.  I feel great joy and happiness.  I am worthy of feeling happy.
-3. Even when I'm with people, I still feel alone | | I feel happy with myself as a person.  I overcome everything I cant control.  Just give me my 3 points I feel great joy and happiness.
-=======
->>>>>>> 7e6bb773317cfe65ea19fcc111b424003f943582
-
-
 
 * Worry
-1. I keep overthinking every little thing | worry | 
+1. I keep overthinking every little thing | worry | F for McCoy's initial rant.  I think loving thoughts about everyone around me.  I am surrounded by loving, caring people.
 1. I keep overthinking every little thing | | 
 2. I'm terrified of making the wrong decision | worry | 
 2. I'm terrified of making the wrong decision | | 
