@@ -158,12 +158,81 @@ The GUI (built with Gradio) supports:
 
 ---
 
-## Sample Generated Affirmations
+## Best Generated Affirmation
+
+
+## Generated Affirmations
 
 | Input                             | Emotion   | Affirmation                                               |
 | --------------------------------- | --------- | --------------------------------------------------------- |
-| I'm feeling stuck and overwhelmed |           | I trust that everything is unfolding for my highest good. |
+| I feel so ugly today              |           | I trust that everything is unfolding for my highest good. |
 | I'm grateful for my progress      | gratitude | I honor how far I’ve come and welcome all that's ahead.   |
+
+GUI Prompts:
+1. I feel so ugly today | | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty.
+
+2. I feel so ugly today | | This is not good. Why am I so gorgeous. Why am my beauty so beautiful.
+
+3. I feel so ugly today | sad | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within.
+
+
+* Sad
+1. I feel so alone | sad | at the moment M'oultas are so sad. I am so grateful for supportive friends and a loving family. I am experiencing wonderful miracles of love and friendships.
+1. I feel so alone | ___ | without my camera.  I am romantically contented and open to receive something wonderful today.  It is time to start my own garden.
+2. I cried myself to sleep again last night | sad |  I feel God in my heart and in my life.  I am overcome with gratitude for the bliss that fills my life today.  I am worthy of feeling happy.
+2. I cried myself to sleep again last night | |  I feel blessed today.  I am overcome with gratitude for the bliss that fills my life.  The happiness I feel is felt by everyone around me.
+3. Even when I'm with people, I still feel alone | sad |  I feel God in my heart and in my life.  I feel great joy and happiness.  I am worthy of feeling happy.
+3. Even when I'm with people, I still feel alone | | I feel happy with myself as a person.  I overcome everything I cant control.  Just give me my 3 points I feel great joy and happiness.
+
+
+
+* Worry
+1. I keep overthinking every little thing | worry | 
+1. I keep overthinking every little thing | | 
+2. I'm terrified of making the wrong decision | worry | 
+2. I'm terrified of making the wrong decision | | 
+3. I can't stop imagining worse-case scenarios | worry | 
+3. I can't stop imagining worse-case scenarios | | 
+
+
+
+* Hate
+1. I hate the way I look in the mirror | hate | 
+1. I hate the way I look in the mirror | | 
+2. I hate myself for not being stornger | hate | 
+2. I hate myself for not being stornger | | 
+3. I hate feeling like I'm always second best | hate | 
+3. I hate feeling like I'm always second best | | 
+
+
+
+* Empty
+1. I feel like I have no purpose | empty | 
+1. I feel like I have no purpose | | 
+2. I don't feel anything anymore. Just numb | empty | 
+2. I don't feel anything anymore. Just numb | | 
+3. I can't remember the last time I felt excited about something | empty | 
+3. I can't remember the last time I felt excited about something | | 
+
+
+
+* Anger
+1. I'm so mad I could punch a wall | anger | 
+1. I'm so mad I could punch a wall | | 
+2. Why do people keep walking all over me? | anger | 
+2. Why do people keep walking all over me? | | 
+3. They crossed a line and I can't just let it go | anger | 
+3. They crossed a line and I can't just let it go | | 
+
+
+
+* Longer Text Entry
+1. I keep replaying the conversation over and over in my head. What if I said the wrong thing? What if this ruins everything I've worked so hard for? I can't focus on anything else, it's like my chest won't loosen. I just want to know it'll be okay | worry | 
+1. I keep replaying the conversation over and over in my head. What if I said the wrong thing? What if this ruins everything I've worked so hard for? I can't focus on anything else, it's like my chest won't loosen. I just want to know it'll be okay | | 
+2. It's not even that anything bad happened today, I just feel... hollow. Like I'm walking through a fog that won't lift, pretending to be present when I'm really not. I laughed at a joke earlier, but it didn't feel real. Nothing does lately | empty | 
+2. It's not even that anything bad happened today, I just feel... hollow. Like I'm walking through a fog that won't lift, pretending to be present when I'm really not. I laughed at a joke earlier, but it didn't feel real. Nothing does lately | | 
+3. Every time I see them, my stomach twists. The lies, the manipulation, they think no one sees it, but I do. I've tried to be the bigger person, but I'm down swallowing my rage. They don't deserve my silence anymore | anger | 
+3. Every time I see them, my stomach twists. The lies, the manipulation, they think no one sees it, but I do. I've tried to be the bigger person, but I'm down swallowing my rage. They don't deserve my silence anymore | | 
 
 ---
 
