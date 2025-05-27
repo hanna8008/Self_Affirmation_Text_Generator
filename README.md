@@ -181,7 +181,7 @@ The GUI (built with Gradio) supports:
 
 * Worry
 1. I keep overthinking every little thing | worry | F for McCoy's initial rant.  I think loving thoughts about everyone around me.  I am surrounded by loving, caring people.
-1. I keep overthinking every little thing | | 
+1. I keep overthinking every little thing | | is aKin-khing thing that reminds me of a Scion My inner joy expands when I share it with others.  I share my life with a perfect soul mate.  I am surrounded by loving, caring people.
 2. I'm terrified of making the wrong decision | worry | 
 2. I'm terrified of making the wrong decision | | 
 3. I can't stop imagining worse-case scenarios | worry | 
