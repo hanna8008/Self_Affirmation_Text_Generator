@@ -1,3 +1,12 @@
+# ----------------------------------------------------------------------------
+# submit_evaluation_test_data.sh
+# ----------------------------------------------------------------------------
+#
+# Submit a SLURM job to generate affirmations on test data and evaluate them. Runs
+# batch inference and scoring in the affirmgen envrionment on GPU.
+
+
+
 #!/bin/bash
 #project account for resource tracking
 #SBATCH --account=e32706
