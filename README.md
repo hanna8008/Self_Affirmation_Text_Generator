@@ -158,17 +158,17 @@ The GUI (built with Gradio) supports:
 
 ---
 
-## Best Generated Affirmation
-
-
-## Generated Affirmations
-
+## Best Generated Affirmation(s): With and Without Emotion Entry
 | Input                             | Emotion   | Affirmation                                                                                       |
 | --------------------------------- | --------- | ------------------------------------------------------------------------------------------------- |
 | I feel so ugly today              |           | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
 | I feel so ugly today              |           | This is not good. Why am I so gorgeous. Why am my beauty so beautiful.                            |
 | I feel so ugly today              | sad       | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
 
+
+## Generated Affirmations
+
+### Sad Inputs: With vs. Without Emotion Entry
 | Input                                      | Emotion | Affirmation                                                                                                     |
 | ------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
 | I feel so alone                            | sad     | At the moment M'oultas are so sad. I am so grateful for supportive friends and a loving family. I am experiencing wonderful miracles of love and friendships. |
