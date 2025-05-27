@@ -168,6 +168,13 @@ The GUI (built with Gradio) supports:
 | I feel so ugly today              |           | I trust that everything is unfolding for my highest good. |
 | I'm grateful for my progress      | gratitude | I honor how far I’ve come and welcome all that's ahead.   |
 
+| Input                             | Emotion   | Affirmation                                                                                       |
+| --------------------------------- | --------- | ------------------------------------------------------------------------------------------------- |
+| I feel so ugly today              |           | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
+| I feel so ugly today              |           | This is not good. Why am I so gorgeous. Why am my beauty so beautiful.                            |
+| I feel so ugly today              | sad       | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
+
+
 GUI Prompts:
 1. I feel so ugly today | | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty.
 
