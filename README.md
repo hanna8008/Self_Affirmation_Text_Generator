@@ -5,6 +5,7 @@
 
 ### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-project-on-quest)
+##### **Please keep in mind, generations can take between 200-500 seconds to load**
 
 ---
 
@@ -158,6 +159,8 @@ The GUI (built with Gradio) supports:
 * Optional emotion tag
 * Real-time output generation
 
+### **Please keep in mind, generations can take between 200-500 seconds to load**
+
 ---
 
 ## Best Generated Affirmations
@@ -182,17 +185,8 @@ The GUI (built with Gradio) supports:
 | I feel so ugly today                       |         | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
 | I feel so ugly today                       |         | This is not good. Why am I so gorgeous. Why am my beauty so beautiful. |
 | I feel so ugly today                       | sad     | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
+| I keep replaying the conversation over and over in my head. What if I said the wrong thing? What if this ruins everything I've worked so hard for? I can't focus on anything else, it's like my chest won't loosen. I just want to know it'll be okay |         | I take good care of myself. I take great good care and health and prosperity. When I feel happy I manifest more reasons to be happy. |
 
----
-
-
-* Longer Text Entry
-1. I keep replaying the conversation over and over in my head. What if I said the wrong thing? What if this ruins everything I've worked so hard for? I can't focus on anything else, it's like my chest won't loosen. I just want to know it'll be okay | worry | 
-1. I keep replaying the conversation over and over in my head. What if I said the wrong thing? What if this ruins everything I've worked so hard for? I can't focus on anything else, it's like my chest won't loosen. I just want to know it'll be okay | | 
-2. It's not even that anything bad happened today, I just feel... hollow. Like I'm walking through a fog that won't lift, pretending to be present when I'm really not. I laughed at a joke earlier, but it didn't feel real. Nothing does lately | empty | 
-2. It's not even that anything bad happened today, I just feel... hollow. Like I'm walking through a fog that won't lift, pretending to be present when I'm really not. I laughed at a joke earlier, but it didn't feel real. Nothing does lately | | 
-3. Every time I see them, my stomach twists. The lies, the manipulation, they think no one sees it, but I do. I've tried to be the bigger person, but I'm down swallowing my rage. They don't deserve my silence anymore | anger | 
-3. Every time I see them, my stomach twists. The lies, the manipulation, they think no one sees it, but I do. I've tried to be the bigger person, but I'm down swallowing my rage. They don't deserve my silence anymore | | 
 
 ---
 
