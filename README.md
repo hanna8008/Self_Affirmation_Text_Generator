@@ -1,7 +1,7 @@
 # Mirror Me: Self-Affirmation Text Generator Using Fine-Tuned GPT-2
 
 ### Best Affirmation Example  
-[See Output Example](#sample-generated-affirmations)
+[See Best Output Here](#i-cried-myself-to-sleep-again-last-night--separate-evaluation)
 
 ### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-project-on-quest)
@@ -19,10 +19,12 @@
 * [Sample Generated Affirmations](#sample-generated-affirmations)
 * [Training Loss Graph](#training-loss-graph)
 * [Data Preparation & Transfer](#data-preparation--transfer)
-* [Exploratory Data Analysis (EDA) of Combined Dataset](#exploratory-data-analysis-eda-of-combined-dataset)
-* [Model Training on Quest](#model-training-on-quest-northwestern-quest)
+* [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+* [Model Training on Quest (Northwestern Quest)](#model-training-on-quest-northwestern-quest)
+* [Evaluation Metrics (Test Set)](#evaluation-metrics-test-set)
 * [Future Improvements](#future-improvements)
 * [References and Tools Used](#references-and-tools-used)
+
 
 ---
 
