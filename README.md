@@ -16,7 +16,7 @@
 * [Folder Structure](#folder-structure)
 * [Accessing and Running Project on Quest](#accessing-and-running-project-on-quest)
 * [Extra Criteria - GUI Overview](#extra-criteria---gui-overview)
-* [Sample Generated Affirmations](#sample-generated-affirmations)
+* [Sample Generated Affirmations](#additional-generated-affirmations)
 * [Training Loss Graph](#training-loss-graph)
 * [Data Preparation & Transfer](#data-preparation--transfer)
 * [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
@@ -170,7 +170,7 @@ The GUI (built with Gradio) supports:
 ![Best Generated Affirmation Without Emotion](gui-output-examples/cried-myself-without-emotion.png)
 
 
-## Additional Generated Affirmations: With vs. Without Emotion Entry
+## Additional Generated Affirmations
 | Input                                      | Emotion | Affirmation                                                                                                     |
 | ------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
 | I keep overthinking every little thing     | worry   | F for McCoy's initial rant. I think loving thoughts about everyone around me. I am surrounded by loving, caring people. |
