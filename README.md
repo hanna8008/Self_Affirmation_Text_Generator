@@ -1,7 +1,7 @@
 # Mirror Me: Self-Affirmation Text Generator Using Fine-Tuned GPT-2
 
 ### Best Affirmation Example  
-[See Best Output Here](#best-generated-affirmation(s):-with-and-without-emotion-entry)
+[See Best Output Here](#best-generated-affirmations)
 
 ### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-project-on-quest)
@@ -160,7 +160,7 @@ The GUI (built with Gradio) supports:
 
 ---
 
-## Best Generated Affirmation(s): With and Without Emotion Entry
+## Best Generated Affirmations
 | Input                                    | Emotion | Affirmation                                                                                                     |
 | ----------------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
 | I cried myself to sleep again last night | sad     | I feel God in my heart and in my life. I am overcome with gratitude for the bliss that fills my life today. I am worthy of feeling happy. |
