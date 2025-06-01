@@ -1,7 +1,7 @@
 # Mirror Me: Self-Affirmation Text Generator Using Fine-Tuned GPT-2
 
 ### Best Affirmation Example  
-[See Best Output Here](#i-cried-myself-to-sleep-again-last-night--separate-evaluation)
+[See Best Output Here](#Best-Generated-Affirmation(s):-With-and-Without-Emotion-Entry)
 
 ### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-project-on-quest)
@@ -184,8 +184,6 @@ The GUI (built with Gradio) supports:
 | I feel so ugly today                       | sad     | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
 
 ---
-
-### "I cried myself to sleep again last night" – Separate Evaluation
 
 
 * Longer Text Entry
