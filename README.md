@@ -4,7 +4,7 @@
 [See Output Example](#sample-generated-affirmations)
 
 ### How to Run the GUI and Generate Text:  
-[Accessing and Running on Quest](#accessing-and-running-on-quest)
+[Accessing and Running on Quest](#accessing-and-running-project-on-quest)
 
 ---
 
@@ -14,12 +14,12 @@
 * [What You Can Use This For](#what-you-can-use-this-for)
 * [Model Architecture](#model-architecture)
 * [Folder Structure](#folder-structure)
-* [Accessing and Running Project on Quest](#accessing-and-running-on-quest)
+* [Accessing and Running Project on Quest](#accessing-and-running-project-on-quest)
 * [Extra Criteria - GUI Overview](#extra-criteria---gui-overview)
 * [Sample Generated Affirmations](#sample-generated-affirmations)
 * [Training Loss Graph](#training-loss-graph)
 * [Data Preparation & Transfer](#data-preparation--transfer)
-* [Exploratory Data Analysis (EDA) of Combined Dataset](#exploratory-data-analysis-eda)
+* [Exploratory Data Analysis (EDA) of Combined Dataset](#exploratory-data-analysis-eda-of-combined-dataset)
 * [Model Training on Quest](#model-training-on-quest-northwestern-quest)
 * [Future Improvements](#future-improvements)
 * [References and Tools Used](#references-and-tools-used)
@@ -159,64 +159,31 @@ The GUI (built with Gradio) supports:
 ---
 
 ## Best Generated Affirmation(s): With and Without Emotion Entry
-| Input                             | Emotion   | Affirmation                                                                                       |
-| --------------------------------- | --------- | ------------------------------------------------------------------------------------------------- |
-| I feel so ugly today              |           | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
-| I feel so ugly today              |           | This is not good. Why am I so gorgeous. Why am my beauty so beautiful.                            |
-| I feel so ugly today              | sad       | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
+| Input                                    | Emotion | Affirmation                                                                                                     |
+| ----------------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
+| I cried myself to sleep again last night | sad     | I feel God in my heart and in my life. I am overcome with gratitude for the bliss that fills my life today. I am worthy of feeling happy. |
+| I cried myself to sleep again last night |         | I feel blessed today. I am overcome with gratitude for the bliss that fills my life. The happiness I feel is felt by everyone around me. |
+
+![Best Generated Affirmation With Emotion](gui-output-examples/cried-myself-with-emotion.png)
+![Best Generated Affirmation Without Emotion](gui-output-examples/cried-myself-without-emotion.png)
 
 
-## Generated Affirmations
-
-### Sad Inputs: With vs. Without Emotion Entry
+## Additional Generated Affirmations: With vs. Without Emotion Entry
 | Input                                      | Emotion | Affirmation                                                                                                     |
 | ------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
+| I keep overthinking every little thing     | worry   | F for McCoy's initial rant. I think loving thoughts about everyone around me. I am surrounded by loving, caring people. |
+| I keep overthinking every little thing     |         | is aKin-khing thing that reminds me of a Scion. My inner joy expands when I share it with others. I share my life with a perfect soul mate. I am surrounded by loving, caring people. |
 | I feel so alone                            | sad     | At the moment M'oultas are so sad. I am so grateful for supportive friends and a loving family. I am experiencing wonderful miracles of love and friendships. |
 | I feel so alone                            |         | Without my camera. I am romantically contented and open to receive something wonderful today. It is time to start my own garden. |
-| I cried myself to sleep again last night   | sad     | I feel God in my heart and in my life. I am overcome with gratitude for the bliss that fills my life today. I am worthy of feeling happy. |
-| I cried myself to sleep again last night   |         | I feel blessed today. I am overcome with gratitude for the bliss that fills my life. The happiness I feel is felt by everyone around me. |
 | Even when I'm with people, I still feel alone | sad  | I feel God in my heart and in my life. I feel great joy and happiness. I am worthy of feeling happy. |
 | Even when I'm with people, I still feel alone |       | I feel happy with myself as a person. I overcome everything I can't control. Just give me my 3 points—I feel great joy and happiness. |
+| I feel so ugly today                       |         | I am supernaturally beautiful inside out. I am an amazing person. Not a person that u call colorado I am beauty. |
+| I feel so ugly today                       |         | This is not good. Why am I so gorgeous. Why am my beauty so beautiful. |
+| I feel so ugly today                       | sad     | I am manifesting my desired facial and body features now. And my hair is showered from yesterday. My beauty radiate vibrantly from within. |
 
+---
 
-* Worry
-1. I keep overthinking every little thing | worry | F for McCoy's initial rant.  I think loving thoughts about everyone around me.  I am surrounded by loving, caring people.
-1. I keep overthinking every little thing | | is aKin-khing thing that reminds me of a Scion My inner joy expands when I share it with others.  I share my life with a perfect soul mate.  I am surrounded by loving, caring people.
-2. I'm terrified of making the wrong decision | worry | 
-2. I'm terrified of making the wrong decision | | 
-3. I can't stop imagining worse-case scenarios | worry | 
-3. I can't stop imagining worse-case scenarios | | 
-
-
-
-* Hate
-1. I hate the way I look in the mirror | hate | 
-1. I hate the way I look in the mirror | | 
-2. I hate myself for not being stornger | hate | 
-2. I hate myself for not being stornger | | 
-3. I hate feeling like I'm always second best | hate | 
-3. I hate feeling like I'm always second best | | 
-
-
-
-* Empty
-1. I feel like I have no purpose | empty | 
-1. I feel like I have no purpose | | 
-2. I don't feel anything anymore. Just numb | empty | 
-2. I don't feel anything anymore. Just numb | | 
-3. I can't remember the last time I felt excited about something | empty | 
-3. I can't remember the last time I felt excited about something | | 
-
-
-
-* Anger
-1. I'm so mad I could punch a wall | anger | 
-1. I'm so mad I could punch a wall | | 
-2. Why do people keep walking all over me? | anger | 
-2. Why do people keep walking all over me? | | 
-3. They crossed a line and I can't just let it go | anger | 
-3. They crossed a line and I can't just let it go | | 
-
+### "I cried myself to sleep again last night" – Separate Evaluation
 
 
 * Longer Text Entry
