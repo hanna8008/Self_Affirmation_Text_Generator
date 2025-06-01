@@ -1,7 +1,7 @@
 # Mirror Me: Self-Affirmation Text Generator Using Fine-Tuned GPT-2
 
 ### Best Affirmation Example  
-[See Best Output Here](#Best-Generated-Affirmation(s):-With-and-Without-Emotion-Entry)
+[See Best Output Here](#best-generated-affirmation(s):-with-and-without-emotion-entry)
 
 ### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-project-on-quest)
