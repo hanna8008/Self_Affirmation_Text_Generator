@@ -141,7 +141,6 @@ ssh -X your_netid@login.quest.northwestern.edu
 git clone https://github.com/hanna8008/Self_Affirmation_Text_Generator.git
 cd Self_Affirmation_Text_Generator
 bash setup_env.sh
-conda activate affirmgen
 ```
 
 ### 3. Activate "affirmgen" Envrionment
