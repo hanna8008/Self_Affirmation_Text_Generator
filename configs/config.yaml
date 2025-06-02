@@ -42,7 +42,7 @@ test_file: data/test.csv
 
 # --- Output ---
 #directory to save fine-tuned model checkpoints
-output_dir: outputs/checkpoints/
+output_dir: outputs/checkpoints/checkpoint-389640
 #directory to save training logs and event files
 logging_dir: outputs/logs/
 
