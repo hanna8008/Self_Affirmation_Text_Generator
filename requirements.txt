@@ -9,7 +9,7 @@
 
 
 # --- Core Libraries ---
-torch
+torch==2.1.2
 transformers==4.39.3
 datasets
 sentence-transformers>=2.2.2
