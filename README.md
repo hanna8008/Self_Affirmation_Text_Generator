@@ -144,7 +144,12 @@ bash setup_env.sh
 conda activate affirmgen
 ```
 
-### 3. Run GUI
+### 3. Activate "affirmgen" Envrionment
+```bash
+conda activate affirmgen
+```
+
+### 4. Run GUI
 ```bash
 bash run_gui.sh
 ```
