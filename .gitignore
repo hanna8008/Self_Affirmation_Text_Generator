@@ -42,7 +42,7 @@ Thumbs.db
 data/data/og-positive-affirmations-dataset/
 data/data/og-emotion-detection-tweets-dataset/
 data/paired_affirmations.csv
-outputs/
+outputs/logs
 #data/sample_preview.csv
 
 
@@ -73,3 +73,4 @@ data/og-positive-affirmations-dataset/
 
 # --- Directory for Unusable Generated Data ---
 flagged/
+*.safetensors
