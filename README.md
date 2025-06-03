@@ -142,6 +142,8 @@ git clone https://github.com/hanna8008/Self_Affirmation_Text_Generator.git
 cd Self_Affirmation_Text_Generator
 bash setup_env.sh
 ```
+> **Important**: When running the three lines above, the first two will execute successfully, but after running the third one, **make sure to press Enter** to ensure `bash setup_env.sh` runs. You should then see `bash setup_env.sh` in the command line after the first two run.
+
 
 ### 3. Activate "affirmgen" Envrionment
 ```bash
@@ -152,6 +154,10 @@ conda activate affirmgen
 ```bash
 bash run_gui.sh
 ```
+> **Note**: On the first run, `run_gui.sh` will automatically download the fine-tuned model (`model.safetensors`) from Hugging Face. The model will be cached for future runs.
+
+> **Important**: After running `run_gui.sh`, click the URL that appears in your terminal (using **Ctrl+click** or **Cmd+click** on macOS) to access the Gradio web interface and start generating affirmations.
+
 
 ---
 
