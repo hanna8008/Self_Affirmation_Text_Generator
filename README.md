@@ -131,13 +131,7 @@ Self_Affirmation_Text_Generator/
 
 ## Accessing and Running Project on Quest
 
-### Estimated Setup Time
-
-- **Cloning the repository and setting up the environment**: INSERT HERE
-- **Model download (first time)**: INSERT HERE (depending on internet speed)
-- **Launching the GUI**: INSERT HERE (after model download completes)
-
-> **Overall Setup Time from Cloning to Opening GUI**: 
+### Estimated Setup Time from Cloning to Opening GUI**: ~13-15 minutes
 
 > **Note**: The first time running `run_gui.sh` will take the longest, as the model will be downloaded. Subsequent runs will be faster as the model is cached locally. 
 
