@@ -17,6 +17,7 @@ import yaml
 import os
 from datetime import datetime
 import re
+from huggingface_hub import hf_hub_download
 
 
 
@@ -30,16 +31,22 @@ def load_config(path="configs/config.yaml"):
 
 # --- Load Model and Tokenizer ---
 def load_model_and_tokenizer(model_dir):
-    #log which model is being loaded
     print(f"Loading model from: {model_dir}")
-    #load tokenizer from saved model directory
+    
+    # Check if model already exists locally
+    if not os.path.exists(os.path.join(model_dir, 'pytorch_model.bin')) and not os.path.exists(os.path.join(model_dir, 'model.safetensors')):
+        print("Model not found locally, downloading from Hugging Face Hub...")
+        # Download the model if not present locally
+        hf_hub_download(repo_id="hanna8008/affirmation-gpt2", filename="pytorch_model.bin", local_dir=model_dir)
+        hf_hub_download(repo_id="hanna8008/affirmation-gpt2", filename="tokenizer.json", local_dir=model_dir)
+        hf_hub_download(repo_id="hanna8008/affirmation-gpt2", filename="config.json", local_dir=model_dir)
+    
+    # Load the tokenizer and model from the local path
     tokenizer = AutoTokenizer.from_pretrained(model_dir)
-    #load trained GPT-2 model
-    model = AutoModelForCausalLM.from_pretrained(model_dir)
-    #set model to evaluation (non-training) mode
+    model = AutoModelForCausalLM.from_pretrained(model_dir, local_files_only=True)
+    
     model.eval()
     return tokenizer, model
-
 
 
 # --- Format Input (emotion conditioning optional)

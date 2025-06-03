@@ -68,9 +68,9 @@ data/og-positive-affirmations-dataset/
 # --- Model Files ---
 *.pt
 *.ckpt
+*.safetensors
 
 
 
 # --- Directory for Unusable Generated Data ---
 flagged/
-*.safetensors
