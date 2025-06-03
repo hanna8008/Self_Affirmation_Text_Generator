@@ -5,7 +5,7 @@
 
 ### How to Run the GUI and Generate Text:  
 [Accessing and Running on Quest](#accessing-and-running-project-on-quest)
-##### **Please keep in mind, generations can take between 200-500 seconds to load**
+##### **Please keep in mind, generations can take between 30-500 seconds to load, depends on Generator's mood**
 
 ---
 
